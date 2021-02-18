@@ -23,7 +23,7 @@ void main()
 				exit(1);
 			
 			case 2:   //todo×¢²áÒ³Ãæ
-				rgst();
+				();
 			case 3: 
 
 			case 4: 
