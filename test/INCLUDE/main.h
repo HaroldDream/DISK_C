@@ -1,16 +1,16 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-//*¿ªÊ¼µÄÖ÷Ò³Ãæ
+//*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 
 
-#include "data.h" //todoÊý¾Ý¿â
-#include "home.h"  //todoÖ÷Ò³ºÍµÇÂ¼
-/*#include "register.h"  //todo×¢²á
-#include "user.h" //todoÊ³ÌÃ½çÃæ
-#include "admin.h" //todoºóÇÚ¹ÜÀíÔ±½çÃæ
+#include "data.h" //todoï¿½ï¿½ï¿½Ý¿ï¿½
+#include "home.h"  //todoï¿½ï¿½Ò³ï¿½Íµï¿½Â¼
+/*#include "register.h"  //todo×¢ï¿½ï¿½
+#include "user.h" //todoÊ³ï¿½Ã½ï¿½ï¿½ï¿½
+#include "admin.h" //todoï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 */
 
-void main();//dqhwuhdqo
+void main();//
 
 #endif
