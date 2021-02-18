@@ -3,13 +3,13 @@
 
 typedef struct userinfo //食堂用户
 {
-    char username[15];
+    char name[15];
     char password[15];
 }USER;
 
 typedef struct admininfo //后勤管理员用户
 {
-    char username[15];
+    char name[15];
     char password[15];
 }ADMIN;
 
