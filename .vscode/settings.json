@@ -2,7 +2,10 @@
     "files.associations": {
         "MOUSE.C": "cpp",
         "MAIN.C": "cpp",
-        "IMOUSE.C": "cpp"
+        "IMOUSE.C": "cpp",
+        "data.h": "c",
+        "drawhome.h": "c",
+        "common.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
