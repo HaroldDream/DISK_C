@@ -2,6 +2,7 @@
 #define _USERDATA_H_
 
 //*µÇÂ¼×¢²áº¯Êý
-void login(USER *u);
+void user_login(int *func)
+void user_register(int *func);
 
 #endif
