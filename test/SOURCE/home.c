@@ -1,5 +1,6 @@
 #include "common.h"
 #include "home.h"
+#include "userdata.h"
 
 //todo×î³õ½çÃæ
 void home(int *page)
