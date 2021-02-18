@@ -55,7 +55,7 @@ typedef struct warehouse //后勤仓库信息
     FD food[20];
 }WH;
 
-typedef struct logisticinfo
+typedef struct logisticinfo //物流信息
 {
     char location[15]; //当前位置
     char state[15]; //当前状态
