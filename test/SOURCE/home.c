@@ -8,7 +8,7 @@ void home(int *page)
 
 	clrmous(MouseX,MouseY);
 	delay(100);
-	home_screen();
+	drawhome();
 	
     while(*page == 0)
 	{

@@ -39,3 +39,9 @@ void drawhome(void)
 	puthz(360,390,"注册"，24，30，1)；
 
 }
+
+/*void draw_register(void)
+{
+
+}
+*/
