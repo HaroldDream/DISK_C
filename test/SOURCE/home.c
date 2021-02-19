@@ -5,11 +5,12 @@
 //todo×î³õ½çÃæ
 void home(int *page)
 {
+	char s[20]={'\0'};
 
 	clrmous(MouseX,MouseY);
 	delay(100);
 	drawhome();
-	
+
     while(*page == 0)
 	{
 		newmouse(&MouseX, &MouseY, &press);
@@ -18,7 +19,10 @@ void home(int *page)
 		{
 			*page = 1;
 		}
+	if (*page == 1) break;
+
 	}
+
 	return;
 }
 

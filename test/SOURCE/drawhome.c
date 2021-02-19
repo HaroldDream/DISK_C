@@ -1,19 +1,19 @@
-#include "public.h"
+#include "common.h"
 
-//todoç»˜åˆ¶æœ€åˆç•Œé¢
+//todo»æÖÆ×î³õ½çÃæ
 void drawhome(void)
 {
 	cleardevice();
 	setbkcolor(WHITE);
 	
-	setfillstyle(SOLID_FILL, BLUE);//todoè´¦å·å¯†ç è¾“å…¥æ¡†
+	setfillstyle(SOLID_FILL, BLUE);//todoÕËºÅÃÜÂëÊäÈë¿ò
 	bar(139,239,201,281);
 	bar(139,319,201,361);
-	bar(421,319,461,361);//todoç™»å½•æŒ‰é”®
+	bar(421,319,461,361);//todoµÇÂ¼°´¼ü
 	setcolor(BLUE);
     setlinestyle(SOLID_LINE, 0, 3);
-	rectangle(200,240,420,280);//todoè´¦å·è¾“å…¥æ¡†
-	rectangle(200,320,420,360);//todoå¯†ç è¾“å…¥æ¡†
+	rectangle(200,240,420,280);//todoÕËºÅÊäÈë¿ò
+	rectangle(200,320,420,360);//todoÃÜÂëÊäÈë¿ò
 	setcolor(WHITE);
     circle(170,250,7);
 	ellipse(170,275,0,180,15,15);
@@ -28,15 +28,15 @@ void drawhome(void)
     fillellipse(300,160,40,40);
 	setcolor(BLUE);
 	circle(300,160,40);
-    circle(150,390,8);//todoé£Ÿå ‚ç«¯å…¥å£æç¤ºç‚¹
-    circle(270,390,8);//todoåå‹¤ç«¯å…¥å£æç¤ºç‚¹
+    circle(150,390,8);//todoÊ³ÌÃ¶ËÈë¿ÚÌáÊ¾µã
+    circle(270,390,8);//todoºóÇÚ¶ËÈë¿ÚÌáÊ¾µã
 	
 	setcolor(RED);
 	line(612, 6, 634, 28);
 	line(612, 28, 634, 6);
 
-    puthz(45,40,"æ¬¢è¿ç™»å½•åå‹¤é›†å›¢é£Ÿå ‚ä¾›åº”é“¾ç®¡ç†ç³»ç»Ÿ",24,30,1);
-	puthz(360,390,"æ³¨å†Œ"ï¼Œ24ï¼Œ30ï¼Œ1)ï¼›
+    puthz(45,40,"»¶Ó­µÇÂ¼ºóÇÚ¼¯ÍÅÊ³ÌÃ¹©Ó¦Á´¹ÜÀíÏµÍ³",24,30,1);
+	puthz(360,390,"×¢²á",24,30,1);
 
 }
 
