@@ -1,5 +1,6 @@
 #include "common.h"
 #include "main.h"
+#include "home.h"
 
 
 void main()
@@ -21,13 +22,13 @@ void main()
 				delay(1000);
 				closegraph();//¹Ø±Õ»­Í¼
 				exit(1);
-			
+			/*
 			case 2:   //todo×¢²áÒ³Ãæ
 				();
-			case 3: 
+			case 3:
 
-			case 4: 
-
+			case 4:
+            */
 		}
 	}
 

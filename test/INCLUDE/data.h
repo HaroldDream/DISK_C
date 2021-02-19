@@ -13,6 +13,14 @@ typedef struct admininfo //后勤管理员用户
     char password[15];
 }ADMIN;
 
+typedef struct timeinfo //时间信息
+{
+    char dlv1[11]; //供应商发货时间
+    char rcv1[11]; //后勤仓库收货时间
+    char dlv2[11]; //后勤仓库发货时间
+    char rcv2[11]; //食堂收货时间
+}TIME; 
+
 typedef struct foodinfo //食材  
 {
     char name[15];  //名称
@@ -27,14 +35,6 @@ typedef struct supplierinfo //供应商
     char phone[12]; //电话
     FD food[20];    //销售的食材
 }SPL;
-
-typedef struct timeinfo //时间信息
-{
-    char dlv1[11]; //供应商发货时间
-    char rcv1[11]; //后勤仓库收货时间
-    char dlv2[11]; //后勤仓库发货时间
-    char rcv2[11]; //食堂收货时间
-}TIME; 
 
 typedef struct menuinfo //具体菜单信息
 {
