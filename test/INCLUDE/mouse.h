@@ -4,15 +4,15 @@
 #define MAX_X 640
 #define MAX_Y 480
 
-int mouse_press(int x1, int y1, int x2, int y2);//å¦‚æœåœ¨æ¡†ä¸­ç‚¹å‡»ï¼Œåˆ™è¿”å›1ï¼›åœ¨æ¡†ä¸­æœªç‚¹å‡»ï¼Œåˆ™è¿”å›2ï¼›ä¸åœ¨æ¡†ä¸­åˆ™è¿”å›0
-void mouse(int,int);//è®¾è®¡é¼ æ ‡
-void mouseinit(void);//åˆå§‹åŒ–
-//void mou_pos(int*,int*,int*);//æ›´æ”¹é¼ æ ‡ä½ç½®
-void mread(int *,int *,int*);//æ”¹åæ ‡ä¸ç”»
-void save_bk_mou(int x,int y);//å­˜é¼ æ ‡èƒŒæ™¯
-void clrmous(int x,int y);//æ¸…é™¤é¼ æ ‡
-void drawmous(int x,int y);//ç”»é¼ æ ‡
-void newmouse(int *nx,int *ny,int *nbuttons);   //æ›´æ–°é¼ æ ‡
+int mouse_press(int x1, int y1, int x2, int y2);//Èç¹ûÔÚ¿òÖĞµã»÷£¬Ôò·µ»Ø1£»ÔÚ¿òÖĞÎ´µã»÷£¬Ôò·µ»Ø2£»²»ÔÚ¿òÖĞÔò·µ»Ø0
+void mouse(int,int);//Éè¼ÆÊó±ê
+void mouseinit(void);//³õÊ¼»¯
+//void mou_pos(int*,int*,int*);//¸ü¸ÄÊó±êÎ»ÖÃ
+void mread(int *,int *,int*);//¸Ä×ø±ê²»»­
+void save_bk_mou(int x,int y);//´æÊó±ê±³¾°
+void clrmous(int x,int y);//Çå³ıÊó±ê
+void drawmous(int x,int y);//»­Êó±ê
+void newmouse(int *nx,int *ny,int *nbuttons);   //¸üĞÂÊó±ê
 
 extern int MouseX;
 extern int MouseY;

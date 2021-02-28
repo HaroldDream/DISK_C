@@ -1,47 +1,75 @@
 #include "common.h"
 
-//todo绘制最初界面
 void drawhome(void)
 {
 	cleardevice();
 	setbkcolor(WHITE);
 	
-	setfillstyle(SOLID_FILL, BLUE);//todo账号密码输入框
-	bar(139,239,201,281);
-	bar(139,319,201,361);
-	bar(421,319,461,361);//todo登录按键
+	setfillstyle(SOLID_FILL, BLUE);
+	bar(1,1,639,100);
+	bar(179,239,241,281);
+	bar(179,299,241,341);
+	bar(421,299,461,341);//todo登录按键
+
 	setcolor(BLUE);
     setlinestyle(SOLID_LINE, 0, 3);
-	rectangle(200,240,420,280);//todo账号输入框
-	rectangle(200,320,420,360);//todo密码输入框
+	rectangle(240,240,460,280);//todo账号框
+	rectangle(240,300,420,340);//todo密码框
+
 	setcolor(WHITE);
-    circle(170,250,7);
-	ellipse(170,275,0,180,15,15);
-	ellipse(170,337,0,180,10,10);
-	rectangle(157,340,183,355);
-	line(430,340,450,340);
-	moveto(440,330);
-	lineto(450,340);
-	lineto(440,350);
+    circle(210,250,7);//*账号图案
+	ellipse(210,275,0,180,15,15);
+	ellipse(210,317,0,180,10,10);//*密码图案
+	rectangle(197,320,223,335);
+
+	line(430,320,450,320);//*登录键图案
+	moveto(440,310);
+	lineto(450,320);
+	lineto(440,330);
 
     setfillstyle(SOLID_FILL,LIGHTBLUE);
-    fillellipse(300,160,40,40);
+    fillellipse(340,170,50,50);//*头像
 	setcolor(BLUE);
-	circle(300,160,40);
-    circle(150,390,8);//todo食堂端入口提示点
-    circle(270,390,8);//todo后勤端入口提示点
+	circle(340,170,50);
+    circle(190,370,8);//todo后勤圈圈
+    circle(310,370,8);//todo食堂圈圈
 	
 	setcolor(RED);
 	line(612, 6, 634, 28);
 	line(612, 28, 634, 6);
 
-    puthz(45,40,"欢迎登录后勤集团食堂供应链管理系统",24,30,1);
-	puthz(360,390,"注册",24,30,1);
+    puthz(35,40,"欢迎登录后勤集团食堂供应链管理系统",32,35,WHITE);
+    puthz(205,358,"后勤端",24,30,BLUE);
+	puthz(325,358,"食堂端",24,30,BLUE);
+	puthz(440,358,"注册",24,30,LIGHTBLUE);
 
 }
 
-/*void draw_register(void)
+
+void drawregister(void)
 {
+    cleardevice();
+	setbkcolor(WHITE);
+	
+	setcolor(WHITE);
+    setfillstyle(SOLID_FILL, BLUE);
+	bar(1,1,639,100);
+	setcolor(BLUE);
+	setlinestyle(SOLID_LINE, 0, 3);
+	rectangle(240,120,240+220,120+40);               //*用户名框
+	rectangle(240,120+60,240+220,120+60+40);         //*联系电话框
+	rectangle(240,120+120,240+220,120+120+40);       //*密码框
+    rectangle(240,120+180,240+220,120+180+40);       //*确认密码框
+	setfillstyle(SOLID_FILL, RED);
+	bar(280,120+240,280+140,120+240+40);             //*注册键    
+    bar(560+30-90,120+240,560+30-10,120+240+40);     //*返回键
 
+	puthz(35,35,"后勤集团食堂供应链管理系统注册界面",32,35,WHITE);
+	puthz(280+25,120+240+4,"注册",32,62,WHITE);
+	puthz(560-90+30+3,120+240+4,"返回",32,42,WHITE);
+	puthz(115+2,120+4,"用户名",32,42,BLUE);
+	puthz(100,120+60+4,"联系电话",32,34,BLUE);
+	puthz(120+13,120+120+4,"密码",32,62,BLUE);
+	puthz(100,120+180+4,"确认密码",32,34,BLUE);
+	
 }
-*/

@@ -10,6 +10,7 @@ void main()
 	int mode   = VGAHI;
 	initgraph(&driver,&mode,"C:\\BORLANDC\\bgi");
 	mouseinit();
+
     while (1)
 	{
 		switch (page)
@@ -22,9 +23,11 @@ void main()
 				delay(1000);
 				closegraph();//¹Ø±Õ»­Í¼
 				exit(1);
+			
+			case 2:   //*×¢²áÒ³Ãæ
+				registermain(&page);  
+				break;   
 			/*
-			case 2:   //todo×¢²áÒ³Ãæ
-				();
 			case 3:
 
 			case 4:
