@@ -24,7 +24,6 @@ void registermain (int *page)
 
 	clrmous(MouseX,MouseY);
 	delay(100);
-	cleardevice();
 	drawregister();
 
     while (1)
