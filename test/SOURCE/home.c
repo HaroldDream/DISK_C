@@ -1,6 +1,7 @@
 #include "common.h"
 #include "home.h"
-#include "userdata.h"
+#include "drawhome.h"
+
 
 //主页
 void home(int *page)
@@ -14,7 +15,7 @@ void home(int *page)
 
 	clrmous(MouseX,MouseY);
 	delay(100);
-	home_screen();
+	drawhome();
 	
     while(1)
 	{
@@ -220,8 +221,8 @@ void home(int *page)
                 MouseS = 0;
             }
             continue;
-        }
-	return;  //?
+		}
+	}
 }
 
 /********************************************
@@ -241,10 +242,10 @@ void selectbutton_home(int x1, int y1, int x2, int y2, int color1, int num)
 
 	switch (num)
 	{
-	case 1://*选中注册
+	case 1: //*选中注册
 		puthz(440,358,"注册",24,30,RED);
 		break;
-	case 2://*选中登录键
+	case 2: //*选中登录键
 	    setcolor(DARKGRAY);
 		setlinestyle(SOLID_LINE, 0, 3);
 	    line(430,320,450,320);   
@@ -252,11 +253,11 @@ void selectbutton_home(int x1, int y1, int x2, int y2, int color1, int num)
 	    lineto(450,320);
 	    lineto(440,330);
 	    break;
-	case 3://*选中账号框
+	case 3: //*选中账号框
 		break;
-	case 4://*选中密码框
+	case 4: //*选中密码框
 		break;
-	default:
+	default: 
 		closegraph();
 		printf("something runs wrong in selectbutton_home");
 		exit(1);

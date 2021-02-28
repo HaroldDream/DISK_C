@@ -5,12 +5,14 @@ typedef struct userinfo //食堂用户
 {
     char name[15];
     char password[15];
+    char phone[20];
 }USER;
 
 typedef struct admininfo //后勤管理员用户
 {
     char name[15];
-    char password[15];
+    char password[20];
+    char phone[15];
 }ADMIN;
 
 typedef struct timeinfo //时间信息

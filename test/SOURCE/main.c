@@ -1,6 +1,7 @@
 #include "common.h"
 #include "main.h"
 #include "home.h"
+#include "register.h"
 
 
 void main()
