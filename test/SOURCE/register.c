@@ -3,6 +3,7 @@
 #include "drawhome.h"
 #include "register.h"
 #include "input.h"
+#include "judge.h"
 
 /********************************************
 DESCRIPTION:注册
@@ -12,10 +13,10 @@ RETURN:
 
 void registermain (int *page)
 {
-    char U[15] = { '\0' };   //*6-12位，用户名
-	char C[20] = { '\0' };   //*11位，联系方式
-	char P[20] = { '\0' };   //*8-16位，密码
-	char CP[20] = { '\0' };  //*8-16位，确认密码
+    char UNAME[15] = { '\0' };   //*6-12位，用户名
+	char PHONE[20] = { '\0' };   //*11位，联系方式
+	char PASSWORD[20] = { '\0' };   //*8-16位，密码
+	char CPASSWORD[20] = { '\0' };  //*8-16位，确认密码
 	int box1 = 0;            //*输入框状态
 	int box2 = 0;
 	int box3 = 0;
@@ -48,9 +49,9 @@ void registermain (int *page)
 			{
 				MouseS = 0;
 				selectbutton_register(240,120,240+220,120+40, LIGHTGRAY, 1);
-				U[0] = '\0';
-				input(U, 240 , 120 , 12, LIGHTGRAY);//后期输入函数
-				if(strlen(U) != 0)
+				UNAME[0] = '\0';
+				input(UNAME, 240 , 120 , 12, LIGHTGRAY);//后期输入函数
+				if(strlen(UNAME) != 0)
 					box1 = 1;
 				else
 					box1 = 0;
@@ -76,9 +77,9 @@ void registermain (int *page)
 			{
 				MouseS = 0;
 				selectbutton_register(240,120+60,240+220,120+60+40, LIGHTGRAY, 2);
-				C[0] = '\0';
-				input(C, 240 , 120+60 , 11, LIGHTGRAY);
-				if(strlen(C) != 0)
+				PHONE[0] = '\0';
+				input(PHONE, 240 , 120+60 , 11, LIGHTGRAY);
+				if(strlen(PHONE) != 0)
 					box2 = 1;
 				else
 					box2 = 0;
@@ -104,9 +105,9 @@ void registermain (int *page)
 			{
 				MouseS = 0;
 				selectbutton_register(240,120+120,240+220,120+120+40, LIGHTGRAY, 3);
-				P[0] = '\0';
-				inputmm(P, 240 , 120+120 , 16, LIGHTGRAY);
-				if(strlen(P) != 0)
+				PASSWORD[0] = '\0';
+				inputmm(PASSWORD, 240 , 120+120 , 16, LIGHTGRAY);
+				if(strlen(PASSWORD) != 0)
 					box3 = 1;
 				else
 					box3 = 0;
@@ -131,9 +132,9 @@ void registermain (int *page)
 			{
 				MouseS = 0;
 				selectbutton_register(240,120+180,240+220,120+180+40, LIGHTGRAY, 4);
-				CP[0] = '\0';
-				inputmm(CP, 240 , 120+180 , 16, LIGHTGRAY);
-				if(strlen(CP) != 0)
+				CPASSWORD[0] = '\0';
+				inputmm(CPASSWORD, 240 , 120+180 , 16, LIGHTGRAY);
+				if(strlen(CPASSWORD) != 0)
 					box4 = 1;
 				else
 					box4 = 0;
@@ -151,17 +152,18 @@ void registermain (int *page)
 		    else if(mouse_press(280,120+240,280+140,120+240+40) == 1 && box1*box2*box3*box4 == 1)
 		    {
 			    MouseS = 0;
-				/*if (register_complete(U, C , P, CP,))
+				if (register_success(UNAME, PHONE , PASSWORD, CPASSWORD))
 				{
-					state=4;
-					tanchuang(state);
+					puthz(280-140+25,120+240+4,"注册成功",32,38,RED);
+					delay(1000);
 					*page = 0;
 					return;
 				}
 				else
 				{
+					delay(1000);
 					continue;
-				}*/
+				}
 		    }
 		}
 		
@@ -197,6 +199,7 @@ void registermain (int *page)
 			   {
 			    	recoverbutton_register(4);
 			   }
+			   num = 0;
 		    }
 		    if (MouseS != 0)
             {
@@ -227,15 +230,15 @@ void selectbutton_register(int x1, int y1, int x2, int y2, int color1, int num)
 
 	switch (num)
 	{
-	case 1://*用户名框
+	case 1: //*用户名框
 		break;
-	case 2://*联系电话框	    
+	case 2: //*联系电话框	    
 	    break;
-	case 3://*密码框
+	case 3: //*密码框
 		break;
-	case 4://*确认密码框
+	case 4: //*确认密码框
 		break;
-	default:
+	default: 
 		closegraph();
 		printf("something runs wrong in selectbutton_register");
 		exit(1);
@@ -253,28 +256,28 @@ void recoverbutton_register(int num)
 	clrmous(MouseX, MouseY);
 	switch (num)
 	{
-	case 1:									//*用户名框恢复
+	case 1:   //*用户名框恢复
 	    setfillstyle(SOLID_FILL,WHITE);
 		bar(240,120,240+220,120+40);
 		setcolor(BLUE);
 	    setlinestyle(SOLID_LINE, 0, 3);
 	    rectangle(240,120,240+220,120+40);
 		break;
-	case 2:									//*联系电话框恢复
+	case 2:   //*联系电话框恢复
 	    setfillstyle(SOLID_FILL,WHITE);
 		bar(240,120+60,240+220,120+60+40);
 		setcolor(BLUE);
 	    setlinestyle(SOLID_LINE, 0, 3);
 	    rectangle(240,120+60,240+220,120+60+40);
 		break;
-	case 3:									//*密码框恢复
+	case 3:   //*密码框恢复
 	    setfillstyle(SOLID_FILL,WHITE);
 		bar(240,120+120,240+220,120+120+40);
 		setcolor(BLUE);
 	    setlinestyle(SOLID_LINE, 0, 3);
 	    rectangle(240,120+120,240+220,120+120+40);
 	    break;
-	case 4:									//*确认密码框恢复
+	case 4:   //*确认密码框恢复
 	    setfillstyle(SOLID_FILL,WHITE);
 		bar(240,120+180,240+220,120+180+40);
 		setcolor(BLUE);

@@ -2,11 +2,11 @@
 #include "home.h"
 #include "drawhome.h"
 
-
+         
 //主页
 void home(int *page)
 {
-    int flag = 0;		//*判断模式：1为后勤，2为食堂
+	//int flag = 0;		//*判断模式：1为后勤，2为食堂
 	int num = 0;		//*按键序号：1：注册 2：登录 3：账号 4：密码 5:后勤 6：食堂
 	int pre1 = 0;       //*是否点击后勤端
 	int pre2 = 0;        //*是否点击食堂端
@@ -37,13 +37,13 @@ void home(int *page)
 		    else if (mouse_press(182,362,290,380) == 1)
 		    {
 			    MouseS = 0;
-				flag = 1; 
+				//flag = 1; 
 				pre1 = 1;
 				selectmode_home(5);
                 recoverbutton_home(6);   //*将之前选中的端按钮恢复
 				setfillstyle(SOLID_FILL,LIGHTBLUE);
                 fillellipse(340,160,50,50);
-				puthz(320,140,"后",48,30,WHITE);
+				puthz(320,150,"后",48,30,WHITE);
 			    continue;
 		    }
 			/*else if (mouse_press(182,362,290,380) == 2 && flag == 2)
@@ -72,13 +72,13 @@ void home(int *page)
 		    else if (mouse_press(302,362,410,380) == 1)
 		    {
 			    MouseS = 0;
-				flag = 2; 
+				//flag = 2; 
 				pre2 = 1;
 				selectmode_home(6);
                 recoverbutton_home(5);   //*将之前选中的端按钮恢复
 				setfillstyle(SOLID_FILL,LIGHTBLUE);
                 fillellipse(340,160,50,50);
-				puthz(320,140,"食",48,30,WHITE);
+				puthz(320,150,"食",48,30,WHITE);
 			    continue;
 		    }
             /*else if (mouse_press(302,362,410,380) == 2 && flag == 1)

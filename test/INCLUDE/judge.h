@@ -1,10 +1,10 @@
 #ifndef _JUDGE_H_
 #define _JUDGE_H_
 
-int register_success(char* u,char *c, char* p, char* cp); //*ç”¨æ¥åˆ¤æ–­æ³¨å†Œä¿¡æ¯æ˜¯å¦è¾“å…¥å®Œå…¨å’Œæ­£ç¡®
-void judgelength(char* str, int* box, int num); //*åˆ¤æ–­å„ä¸ªè¾“å…¥æ¡†é•¿åº¦æ˜¯å¦ç¬¦åˆè¦æ±‚
-void recover (int num); //*æ¢å¤è¾“å…¥æ¡†æç¤º
-int judge_sameuser(char* new_user); //*åˆ¤æ–­è´¦æˆ·æ˜¯å¦å‡ºç°é‡å
+int register_success(char* u,char *c, char* p, char* cp); //*ÓÃÀ´ÅĞ¶Ï×¢²áĞÅÏ¢ÊÇ·ñÊäÈëÍêÈ«ºÍÕıÈ·
+void judgelength(char* str, int* box, int num); //*ÅĞ¶Ï¸÷¸öÊäÈë¿ò³¤¶ÈÊÇ·ñ·ûºÏÒªÇó
+void recover (int num); //*»Ö¸´ÊäÈë¿òÌáÊ¾
+int judge_sameuser(char* new_user); //*ÅĞ¶ÏÕË»§ÊÇ·ñ³öÏÖÖØÃû
 
 
 #endif

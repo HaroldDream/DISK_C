@@ -4,10 +4,10 @@
 /********************************************
 FUNCTION:input_data
 DESCRIPTION: 建立用户信息
-INPUT:username,contact,password
+INPUT:username,phone,password
 RETURN:无
 ********************************************/
-void input_data(char* username, char* contact, char* password)
+void input_data(char* username, char* phone, char* password)
 {
 	FILE* fp;
 	USER* u;
@@ -28,7 +28,7 @@ void input_data(char* username, char* contact, char* password)
 	}
 	memset(u,'\0',sizeof(USER));
 	strcpy(u->username, username);
-	strcpy(u->contact, contact);
+	strcpy(u->phone, phone);
 	strcpy(u->password, password);
 	fseek(fp, 0, SEEK_END);//跳转至文件末尾
 	fwrite(u, sizeof(USER), 1, fp);//把用户信息写入文件
