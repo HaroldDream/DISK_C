@@ -28,11 +28,14 @@ void main()
 			case 2:   //*注册页面
 				registermain(&page);  
 				break;   
-			/*
-			case 3:
 
-			case 4:
-            */
+			case 3:   //*后勤管理员主页面
+			    admain(&page);
+				break;
+
+			case 4:   //*食堂用户主页面
+			    usermain(&page);
+				break;
 		}
 	}
 

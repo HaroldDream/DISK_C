@@ -26,7 +26,7 @@ void registermain (int *page)
 	clrmous(MouseX,MouseY);
 	delay(100);
 	drawregister();
-
+	
     while (1)
 	{
 		newmouse(&MouseX, &MouseY, &press);
@@ -51,7 +51,7 @@ void registermain (int *page)
 				selectbutton_register(240,120,240+220,120+40, LIGHTGRAY, 1);
 				UNAME[0] = '\0';
 				input(UNAME, 240 , 120 , 12, LIGHTGRAY);//后期输入函数
-				if(strlen(UNAME) != 0)
+				if(strlen(UNAME) != 0)                  //判断是否输入
 					box1 = 1;
 				else
 					box1 = 0;
@@ -79,7 +79,7 @@ void registermain (int *page)
 				selectbutton_register(240,120+60,240+220,120+60+40, LIGHTGRAY, 2);
 				PHONE[0] = '\0';
 				input(PHONE, 240 , 120+60 , 11, LIGHTGRAY);
-				if(strlen(PHONE) != 0)
+				if(strlen(PHONE) != 0)            //判断是否输入
 					box2 = 1;
 				else
 					box2 = 0;
@@ -107,7 +107,7 @@ void registermain (int *page)
 				selectbutton_register(240,120+120,240+220,120+120+40, LIGHTGRAY, 3);
 				PASSWORD[0] = '\0';
 				inputmm(PASSWORD, 240 , 120+120 , 16, LIGHTGRAY);
-				if(strlen(PASSWORD) != 0)
+				if(strlen(PASSWORD) != 0)            //判断是否输入
 					box3 = 1;
 				else
 					box3 = 0;
@@ -134,8 +134,8 @@ void registermain (int *page)
 				selectbutton_register(240,120+180,240+220,120+180+40, LIGHTGRAY, 4);
 				CPASSWORD[0] = '\0';
 				inputmm(CPASSWORD, 240 , 120+180 , 16, LIGHTGRAY);
-				if(strlen(CPASSWORD) != 0)
-					box4 = 1;
+				if(strlen(CPASSWORD) != 0)             //判断是否输入
+					box4 = 1; 
 				else
 					box4 = 0;
 				continue;
@@ -149,12 +149,15 @@ void registermain (int *page)
 			    MouseS = 1;
 		        continue;
 		    }
-		    else if(mouse_press(280,120+240,280+140,120+240+40) == 1 && box1*box2*box3*box4 == 1)
+		    else if(mouse_press(280,120+240,280+140,120+240+40) == 1 && box1*box2*box3*box4 == 1)    //需要四个框都输入点击注册键才有效
 		    {
 			    MouseS = 0;
-				if (register_success(UNAME, PHONE , PASSWORD, CPASSWORD))
+				if (register_success(UNAME, PHONE , PASSWORD, CPASSWORD))    //判断四个注册输入是否符合条件
 				{
-					puthz(280-140+25,120+240+4,"注册成功",32,38,RED);
+					setcolor(WHITE);
+	                setfillstyle(SOLID_FILL, WHITE);  
+                    bar(560+30-90-5,120+240-5,560+30-10+5,120+240+40+5);     
+	                puthz(560+30-90-15,120+240+8,"注册成功",24,25,RED);
 					delay(1000);
 					*page = 0;
 					return;

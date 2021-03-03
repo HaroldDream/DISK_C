@@ -1,12 +1,15 @@
 #include "common.h"
 #include "home.h"
 #include "drawhome.h"
+#include "input.h"
+#include "judge.h"
+#include "data.h"
 
          
 //主页
-void home(int *page)
+void home(int *page, USER * u,ADMIN *ad)
 {
-	//int flag = 0;		//*判断模式：1为后勤，2为食堂
+	int flag = 0;		//*判断模式：1为后勤，2为食堂
 	int num = 0;		//*按键序号：1：注册 2：登录 3：账号 4：密码 5:后勤 6：食堂
 	int pre1 = 0;       //*是否点击后勤端
 	int pre2 = 0;        //*是否点击食堂端
@@ -37,13 +40,13 @@ void home(int *page)
 		    else if (mouse_press(182,362,290,380) == 1)
 		    {
 			    MouseS = 0;
-				//flag = 1; 
+				flag = 1; 
 				pre1 = 1;
 				selectmode_home(5);
                 recoverbutton_home(6);   //*将之前选中的端按钮恢复
 				setfillstyle(SOLID_FILL,LIGHTBLUE);
-                fillellipse(340,160,50,50);
-				puthz(320,150,"后",48,30,WHITE);
+                fillellipse(335,170,50,50);
+				puthz(312,145,"后",48,30,WHITE);
 			    continue;
 		    }
 			/*else if (mouse_press(182,362,290,380) == 2 && flag == 2)
@@ -72,13 +75,13 @@ void home(int *page)
 		    else if (mouse_press(302,362,410,380) == 1)
 		    {
 			    MouseS = 0;
-				//flag = 2; 
+				flag = 2; 
 				pre2 = 1;
 				selectmode_home(6);
                 recoverbutton_home(5);   //*将之前选中的端按钮恢复
 				setfillstyle(SOLID_FILL,LIGHTBLUE);
-                fillellipse(340,160,50,50);
-				puthz(320,150,"食",48,30,WHITE);
+                fillellipse(335,170,50,50);
+				puthz(312,145,"食",48,30,WHITE);
 			    continue;
 		    }
             /*else if (mouse_press(302,362,410,380) == 2 && flag == 1)
@@ -108,7 +111,7 @@ void home(int *page)
 		    else if (mouse_press(439,357,495,383) == 1)
 		    {
 			    MouseS = 0;
-				*page = 2;     //todo注册界面
+				*page = 2;     //转到注册界面
 			    return;
 		    }
 		}
@@ -127,11 +130,31 @@ void home(int *page)
 			    }
 		    	continue;
 		    }
-		    else if (mouse_press(421,299,461,341) == 1)
+		    else if (mouse_press(421,299,461,341) == 1 && content1*content2 == 1)
 		    {
 			    MouseS = 0;
-				*page = 1;     //todo登录判断
-			    return;
+				if (judge_rightpassword(u->username, u->password)) 
+				{
+					if (flag == 1)
+					{
+						strcpy(ad->username , u->username);
+						strcpy(ad->password, u->password);
+						*page = 3; //跳转至后勤管理员界面
+						return;
+					}
+					if (flag == 2)
+					{
+						*page = 4;  //跳转至食堂用户界面
+						return;
+					}
+				}
+				else 
+				{
+					puthz(460+10, 240+60+12, "密码输入错误", 16, 17, BLUE);
+					delay(1000);
+					*page = 0;
+					return ;
+				}
 		    }
 		}
 
@@ -153,8 +176,13 @@ void home(int *page)
 		    {
 			    MouseS = 0;
 				selectbutton_home(240,240,460,280,LIGHTGRAY,3);   
-			    //todo用户输入
-				content1 = 0;
+			    u->username[0] = '\0';
+				input(u->username, 400, 270, 9, LIGHTGRAY);//输入账号
+				if(strlen(u->username) != 0)
+					content1 = 1;
+				else
+					content1 = 0;
+				continue;			
 		    }
 		}	
 
@@ -176,8 +204,14 @@ void home(int *page)
 		    {
 			    MouseS = 0;
 				selectbutton_home(240,300,420,340,LIGHTGRAY,4);   
-			    //todo用户输入
-				content2 = 0;
+			    u->password[0] = '\0';
+				inputmm(u->password, 400, 320, 16, LIGHTGRAY);//输入密码
+				if(strlen(u->password) != 0)
+					content2 = 1;
+				else
+					content2 = 0;
+				continue;
+				
 		    }
 		}	
 		

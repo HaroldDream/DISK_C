@@ -5,6 +5,7 @@ int register_success(char* u,char *c, char* p, char* cp); //*ÓÃÀ´ÅĞ¶Ï×¢²áĞÅÏ¢ÊÇ·
 void judgelength(char* str, int* box, int num); //*ÅĞ¶Ï¸÷¸öÊäÈë¿ò³¤¶ÈÊÇ·ñ·ûºÏÒªÇó
 void recover (int num); //*»Ö¸´ÊäÈë¿òÌáÊ¾
 int judge_sameuser(char* new_user); //*ÅĞ¶ÏÕË»§ÊÇ·ñ³öÏÖÖØÃû
+int judge_rightpassword(char* name, char* pass);//*ÅĞ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÆ¥Åä
 
 
 #endif

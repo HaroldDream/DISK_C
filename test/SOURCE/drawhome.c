@@ -6,7 +6,7 @@ void drawhome(void)
 	setbkcolor(WHITE);
 	
 	setfillstyle(SOLID_FILL, BLUE);
-	bar(1,1,639,100);
+	bar(0,0,640,100);
 	bar(179,239,241,281);
 	bar(179,299,241,341);
 	bar(421,299,461,341);//todo登录按键
@@ -28,9 +28,9 @@ void drawhome(void)
 	lineto(440,330);
 
     setfillstyle(SOLID_FILL,LIGHTBLUE);
-    fillellipse(340,170,50,50);//*头像
+    fillellipse(335,170,50,50);//*头像
 	setcolor(BLUE);
-	circle(340,170,50);
+	circle(335,170,50);
     circle(190,370,8);//todo后勤圈圈
     circle(310,370,8);//todo食堂圈圈
 	
@@ -38,7 +38,7 @@ void drawhome(void)
 	line(612, 6, 634, 28);
 	line(612, 28, 634, 6);
 
-    puthz(35,40,"欢迎登录后勤集团食堂供应链管理系统",32,35,WHITE);
+    puthz(30,40,"欢迎登录后勤集团食堂供应链管理系统",32,35,WHITE);
     puthz(205,358,"后勤端",24,30,BLUE);
 	puthz(325,358,"食堂端",24,30,BLUE);
 	puthz(440,358,"注册",24,30,LIGHTBLUE);
