@@ -2,23 +2,32 @@
 #include "main.h"
 #include "home.h"
 #include "register.h"
+#include "admain.h"
+#include "usermain.h"
 
 
 void main()
 {
+	USER u;
+	ADMIN ad;
+
 	int page   = 0;
 	int driver = VGA;
 	int mode   = VGAHI;
 	initgraph(&driver,&mode,"C:\\BORLANDC\\bgi");
 	mouseinit();
 
+	memset(&u,'\0',sizeof(USER));
+	memset(&ad,'\0',sizeof(ADMIN));
+
     while (1)
 	{
 		switch (page)
 		{
 			case 0:    //*最初界面
-				home(&page);  
-				break;     //回到最初界面
+			    memset(&u,'\0',sizeof(USER));
+				home(&page,&u,&ad);  
+				break; //回到最初界面
 
 			case 1:    //*关闭系统
 				delay(1000);

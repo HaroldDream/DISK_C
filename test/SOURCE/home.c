@@ -117,20 +117,20 @@ void home(int *page, USER * u,ADMIN *ad)
 		}
 
         //*µÇÂ¼
-		if (MouseX > 421 && MouseX < 461 && MouseY> 299 && MouseY < 341)
+		if (MouseX > 431 && MouseX < 471 && MouseY> 299 && MouseY < 341)
         {
-            if(mouse_press(421,299,461,341) == 2)
+            if(mouse_press(431,299,471,341) == 2)
            
 		    {
 				MouseS = 1;
 			    if (num == 0) 
 			    {
 					num = 2;
-					selectbutton_home(421,299,461,341,LIGHTGRAY,num);
+					selectbutton_home(431,299,471,341,LIGHTGRAY,num);
 			    }
 		    	continue;
 		    }
-		    else if (mouse_press(421,299,461,341) == 1 && content1*content2 == 1)
+		    else if (mouse_press(431,299,471,341) == 1 && content1*content2 == 1)
 		    {
 			    MouseS = 0;
 				if (judge_rightpassword(u->username, u->password)) 
@@ -150,7 +150,7 @@ void home(int *page, USER * u,ADMIN *ad)
 				}
 				else 
 				{
-					puthz(460+10, 240+60+12, "ÃÜÂëÊäÈë´íÎó", 16, 17, BLUE);
+					puthz(470+10, 240+60+12, "ÃÜÂëÊäÈë´íÎó", 16, 17, BLUE);
 					delay(1000);
 					*page = 0;
 					return ;
@@ -159,25 +159,25 @@ void home(int *page, USER * u,ADMIN *ad)
 		}
 
 	    //*ÕËºÅ¿ò
-		if (MouseX > 240 && MouseX < 460 && MouseY> 240 && MouseY < 280)
+		if (MouseX > 240 && MouseX < 470 && MouseY> 240 && MouseY < 280)
         {
-            if(mouse_press(240,240,460,280) == 2)
+            if(mouse_press(240,240,470,280) == 2)
            
 		    {
 				MouseS = 2;
 			    if (num == 0&&content1 == 0) 
 			    {
 					num = 3;
-					selectbutton_home(240,240,460,280,LIGHTGRAY,num);
+					selectbutton_home(240,240,470,280,LIGHTGRAY,num);
 			    }
 		    	continue;
 		    }
-		    else if (mouse_press(240,240,460,280) == 1)
+		    else if (mouse_press(240,240,470,280) == 1)
 		    {
 			    MouseS = 0;
-				selectbutton_home(240,240,460,280,LIGHTGRAY,3);   
+				selectbutton_home(240,240,470,280,LIGHTGRAY,3);   
 			    u->username[0] = '\0';
-				input(u->username, 400, 270, 9, LIGHTGRAY);//ÊäÈëÕËºÅ
+				input(u->username, 240, 240, 10, LIGHTGRAY);//ÊäÈëÕËºÅ
 				if(strlen(u->username) != 0)
 					content1 = 1;
 				else
@@ -187,25 +187,25 @@ void home(int *page, USER * u,ADMIN *ad)
 		}	
 
         //*ÃÜÂë¿ò
-		if (MouseX > 240 && MouseX < 420 && MouseY> 300 && MouseY < 340)
+		if (MouseX > 240 && MouseX < 430 && MouseY> 300 && MouseY < 340)
         {
-            if(mouse_press(240,300,420,340) == 2)
+            if(mouse_press(240,300,430,340) == 2)
            
 		    {
 				MouseS = 2;
 			    if (num == 0&&content2 == 0) 
 			    {
 					num = 4;
-					selectbutton_home(240,300,420,340,LIGHTGRAY,num);
+					selectbutton_home(240,300,430,340,LIGHTGRAY,num);
 			    }
 		    	continue;
 		    }
-		    else if (mouse_press(240,300,420,340) == 1)
+		    else if (mouse_press(240,300,430,340) == 1)
 		    {
 			    MouseS = 0;
-				selectbutton_home(240,300,420,340,LIGHTGRAY,4);   
+				selectbutton_home(240,300,430,340,LIGHTGRAY,4);   
 			    u->password[0] = '\0';
-				inputmm(u->password, 400, 320, 16, LIGHTGRAY);//ÊäÈëÃÜÂë
+				inputmm(u->password, 240, 300, 10, LIGHTGRAY);//ÊäÈëÃÜÂë
 				if(strlen(u->password) != 0)
 					content2 = 1;
 				else
@@ -282,10 +282,10 @@ void selectbutton_home(int x1, int y1, int x2, int y2, int color1, int num)
 	case 2: //*Ñ¡ÖÐµÇÂ¼¼ü
 	    setcolor(DARKGRAY);
 		setlinestyle(SOLID_LINE, 0, 3);
-	    line(430,320,450,320);   
-	    moveto(440,310);
-	    lineto(450,320);
-	    lineto(440,330);
+	    line(440,320,460,320);//*µÇÂ¼¼üÍ¼°¸
+	    moveto(450,310);
+	    lineto(460,320);
+     	lineto(450,330);
 	    break;
 	case 3: //*Ñ¡ÖÐÕËºÅ¿ò
 		break;
@@ -314,27 +314,27 @@ void recoverbutton_home(int num)
 		break;
 	case 2://*µÇÂ¼¼ü»Ö¸´
 	    setfillstyle(SOLID_FILL,BLUE);    
-	    bar(421,299,461,341);
+	    bar(431,299,471,341);
 		setcolor(WHITE);
 		setlinestyle(SOLID_LINE, 0, 3);
-		line(430,320,450,320);
-	    moveto(440,310);
-	    lineto(450,320);
-	    lineto(440,330);
+		line(440,320,460,320);//*µÇÂ¼¼üÍ¼°¸
+	    moveto(450,310);
+	    lineto(460,320);
+     	lineto(450,330);
 		break;
 	case 3://*ÕËºÅ¿ò»Ö¸´
 	    setfillstyle(SOLID_FILL,WHITE);
-		bar(240,240,460,280);
+		bar(240,240,470,280);
 	    setcolor(BLUE);
         setlinestyle(SOLID_LINE, 0, 3);
-	    rectangle(240,240,460,280);
+	    rectangle(240,240,470,280);
 	    break;
 	case 4://*ÃÜÂë¿ò»Ö¸´
 	    setfillstyle(SOLID_FILL,WHITE);
-		bar(240,300,420,340);
+		bar(240,300,430,340);
 	    setcolor(BLUE);
         setlinestyle(SOLID_LINE, 0, 3);	
-	    rectangle(240,300,420,340);
+	    rectangle(240,300,430,340);
 	    break;  
 	case 5://*ºóÇÚ¶Ë»Ö¸´
 	    /*setfillstyle(SOLID_FILL,LIGHTBLUE);

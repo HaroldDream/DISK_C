@@ -6,15 +6,15 @@ void drawhome(void)
 	setbkcolor(WHITE);
 	
 	setfillstyle(SOLID_FILL, BLUE);
-	bar(0,0,640,100);
+	bar(0,0,639,100);
 	bar(179,239,241,281);
 	bar(179,299,241,341);
-	bar(421,299,461,341);//todo登录按键
+	bar(431,299,471,341);//todo登录按键
 
 	setcolor(BLUE);
     setlinestyle(SOLID_LINE, 0, 3);
-	rectangle(240,240,460,280);//todo账号框
-	rectangle(240,300,420,340);//todo密码框
+	rectangle(240,240,470,280);//todo账号框
+	rectangle(240,300,430,340);//todo密码框
 
 	setcolor(WHITE);
     circle(210,250,7);//*账号图案
@@ -22,15 +22,15 @@ void drawhome(void)
 	ellipse(210,317,0,180,10,10);//*密码图案
 	rectangle(197,320,223,335);
 
-	line(430,320,450,320);//*登录键图案
-	moveto(440,310);
-	lineto(450,320);
-	lineto(440,330);
+	line(440,320,460,320);//*登录键图案
+	moveto(450,310);
+	lineto(460,320);
+	lineto(450,330);
 
     setfillstyle(SOLID_FILL,LIGHTBLUE);
-    fillellipse(335,170,50,50);//*头像
+    fillellipse(340,170,50,50);//*头像
 	setcolor(BLUE);
-	circle(335,170,50);
+	circle(340,170,50);
     circle(190,370,8);//todo后勤圈圈
     circle(310,370,8);//todo食堂圈圈
 	
@@ -53,7 +53,7 @@ void drawregister(void)
 	
 	setcolor(WHITE);
     setfillstyle(SOLID_FILL, BLUE);
-	bar(1,1,639,100);
+	bar(0,0,639,100);
 	setcolor(BLUE);
 	setlinestyle(SOLID_LINE, 0, 3);
 	rectangle(240,120,240+220,120+40);               //*用户名框
@@ -71,7 +71,7 @@ void drawregister(void)
 	puthz(100,120+60+4,"联系电话",32,34,BLUE);
 	puthz(120+13,120+120+4,"密码",32,62,BLUE);
 	puthz(100,120+180+4,"确认密码",32,34,BLUE);
-	puthz(240+220+15,120+14,"六到十二位字符",16,20,BLUE);
-	puthz(240+220+15,120+120+14,"八到十六位字符",16,20,BLUE);
+	puthz(240+220+15,120+14,"六到十位字符",16,20,BLUE);
+	puthz(240+220+15,120+120+14,"六到十位字符",16,20,BLUE);
 	
 }

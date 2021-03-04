@@ -13,10 +13,10 @@ RETURN:
 
 void registermain (int *page)
 {
-    char UNAME[15] = { '\0' };   //*6-12位，用户名
+    char UNAME[15] = { '\0' };   //*6-10位，用户名
 	char PHONE[20] = { '\0' };   //*11位，联系方式
-	char PASSWORD[20] = { '\0' };   //*8-16位，密码
-	char CPASSWORD[20] = { '\0' };  //*8-16位，确认密码
+	char PASSWORD[20] = { '\0' };   //*6-10位，密码
+	char CPASSWORD[20] = { '\0' };  //*6-10位，确认密码
 	int box1 = 0;            //*输入框状态
 	int box2 = 0;
 	int box3 = 0;
@@ -50,7 +50,7 @@ void registermain (int *page)
 				MouseS = 0;
 				selectbutton_register(240,120,240+220,120+40, LIGHTGRAY, 1);
 				UNAME[0] = '\0';
-				input(UNAME, 240 , 120 , 12, LIGHTGRAY);//后期输入函数
+				input(UNAME, 240 , 120 , 10, LIGHTGRAY);//后期输入函数
 				if(strlen(UNAME) != 0)                  //判断是否输入
 					box1 = 1;
 				else
@@ -106,7 +106,7 @@ void registermain (int *page)
 				MouseS = 0;
 				selectbutton_register(240,120+120,240+220,120+120+40, LIGHTGRAY, 3);
 				PASSWORD[0] = '\0';
-				inputmm(PASSWORD, 240 , 120+120 , 16, LIGHTGRAY);
+				inputmm(PASSWORD, 240 , 120+120 , 10, LIGHTGRAY);
 				if(strlen(PASSWORD) != 0)            //判断是否输入
 					box3 = 1;
 				else
@@ -133,7 +133,7 @@ void registermain (int *page)
 				MouseS = 0;
 				selectbutton_register(240,120+180,240+220,120+180+40, LIGHTGRAY, 4);
 				CPASSWORD[0] = '\0';
-				inputmm(CPASSWORD, 240 , 120+180 , 16, LIGHTGRAY);
+				inputmm(CPASSWORD, 240 , 120+180 , 10, LIGHTGRAY);
 				if(strlen(CPASSWORD) != 0)             //判断是否输入
 					box4 = 1; 
 				else
