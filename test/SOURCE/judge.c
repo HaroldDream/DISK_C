@@ -73,7 +73,7 @@ void judgelength(char* str, int* box, int num)
 	switch (num)
     {
     case 1:
-        if (strlen(str) > 5 && strlen(str) < 13)
+        if (strlen(str) > 5 && strlen(str) < 11)
 	    {
 		    *box = 1 ;
 	    }
@@ -95,7 +95,7 @@ void judgelength(char* str, int* box, int num)
 	    }
         break;
     case 3:
-        if (strlen(str) > 7 && strlen(str) < 17)
+        if (strlen(str) > 5 && strlen(str) < 11)
 	    {
 		    *box = 1 ;
 	    }
@@ -106,7 +106,7 @@ void judgelength(char* str, int* box, int num)
 	    }
         break;
     case 4:
-        if (strlen(str) > 7 && strlen(str) < 17)
+        if (strlen(str) > 5 && strlen(str) < 11)
 	    {
 		    *box = 1 ;
 	    }
