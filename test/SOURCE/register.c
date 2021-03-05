@@ -22,6 +22,7 @@ void registermain (int *page)
 	int box3 = 0;
 	int box4 = 0;
 	int num;
+	int mode;       //*1为食堂2为后勤
 
 	clrmous(MouseX,MouseY);
 	delay(100);
@@ -142,22 +143,62 @@ void registermain (int *page)
 			}
 		}
 
-		if (MouseX > 280 && MouseX < 280+140 && MouseY>120+240 && MouseY < 120+240+40) //*注册键
+		if (MouseX > 182+60 && MouseX < 290+60 && MouseY> 362+2 && MouseY < 380+2)  //*选择注册后勤模式
+        {
+            if(mouse_press(182+60,362+2,290+60,380+2) == 2)          
+		    {
+			    if (num == 0) 
+			    {
+				    MouseS = 1;	
+			    }
+		    	continue;
+		    }
+		    else if (mouse_press(182+60,362+2,290+60,380+2) == 1)
+		    {
+			    MouseS = 0;
+				mode = 1; 
+				selectmode_register(5);
+                recoverbutton_register(6);   //*将之前选中的端按钮恢复
+			    continue;
+		    }
+		}
+
+		if (MouseX > 302+60 && MouseX < 410+60 && MouseY> 362+2 && MouseY < 380+2)     //*选择注册食堂模式
+        {
+            if(mouse_press(302+60,362+2,410+60,380+2) == 2)          
+		    {
+			    if (num == 0)
+			    {
+				    MouseS = 1;
+			    }
+		    	continue;
+		    }
+		    else if (mouse_press(302+60,362+2,410+60,380+2) == 1)
+		    {
+			    MouseS = 0;
+				mode = 2; 
+				selectmode_register(6);
+                recoverbutton_register(5);   //*将之前选中的端按钮恢复
+			    continue;
+		    }
+		}
+		
+		if (MouseX > 280 && MouseX < 280+140 && MouseY>120+240+50 && MouseY < 120+240+40+50) //*注册键
 	    {
-			if(mouse_press(280,120+240,280+140,120+240+40) == 2)  
+			if(mouse_press(280,120+240+50,280+140,120+240+40+50) == 2)  
 	        {
 			    MouseS = 1;
 		        continue;
 		    }
-		    else if(mouse_press(280,120+240,280+140,120+240+40) == 1 && box1*box2*box3*box4 == 1)    //需要四个框都输入点击注册键才有效
+		    else if(mouse_press(280,120+240+50,280+140,120+240+40+50) == 1 && box1*box2*box3*box4 == 1)    //需要四个框都输入点击注册键才有效
 		    {
 			    MouseS = 0;
-				if (register_success(UNAME, PHONE , PASSWORD, CPASSWORD))    //判断四个注册输入是否符合条件
+				if (register_success(UNAME, PHONE , PASSWORD, CPASSWORD,mode))    //判断四个注册输入是否符合条件
 				{
 					setcolor(WHITE);
 	                setfillstyle(SOLID_FILL, WHITE);  
-                    bar(560+30-90-5,120+240-5,560+30-10+5,120+240+40+5);     
-	                puthz(560+30-90-15,120+240+8,"注册成功",24,25,RED);
+                    bar(560+30-90-5,120+240+50-5,560+30-10+5,120+240+40+5);     
+	                puthz(560+30-90-15,120+240+50+8,"注册成功",24,25,RED);
 					delay(1000);
 					*page = 0;
 					return;
@@ -170,12 +211,12 @@ void registermain (int *page)
 		    }
 		}
 		
-		if(mouse_press(560-90+30,120+240,560+30-10,120+240+40) == 2) //*返回键  
+		if(mouse_press(560-90+30,120+240+50,560+30-10,120+240+40+50) == 2) //*返回键  
 		{
 			MouseS = 1;
 		    continue;
 		}
-		else if(mouse_press(560+30-90,120+240,560-10+30,120+240+40) == 1)
+		else if(mouse_press(560+30-90,120+240+50,560-10+30,120+240+40+50) == 1)
 		{
 			*page = 0;
 			return;
@@ -287,5 +328,45 @@ void recoverbutton_register(int num)
 	    setlinestyle(SOLID_LINE, 0, 3);
 	    rectangle(240,120+180,240+220,120+180+40);
 	    break;  
+	case 5://*后勤端恢复
+		setcolor(WHITE);
+		setfillstyle(SOLID_FILL,WHITE);
+		fillellipse(189+60,370+2,6,6);
+	    break;  
+	case 6://*食堂端恢复
+		setcolor(WHITE);
+		setfillstyle(SOLID_FILL,WHITE);
+		fillellipse(309+60,370+2,6,6);
+	    break;  
+
+	}
+}
+
+/********************************************
+FUNCTION:selectmode_register
+DESCRIPTION: 显示端口被选择状态函数
+INPUT:num
+RETURN:无
+********************************************/
+void selectmode_register(int num)
+{
+	clrmous(MouseX, MouseY);
+	delay(10);
+	setfillstyle(SOLID_FILL,RED);
+	
+	switch (num)
+	{
+	case 5:   //*后勤端选择
+	    fillellipse(189+60,370+2,5,5);
+		//puthz(320,140,"后",48,30,WHITE);
+		break;
+	case 6:   //*食堂端选择
+	    fillellipse(309+60,370+2,5,5);
+	    //puthz(320,140,"食",48,30,WHITE);
+	    break;
+	default:
+		closegraph();
+		printf("something runs wrong in selectmode_home");
+		exit(1);
 	}
 }

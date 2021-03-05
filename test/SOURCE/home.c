@@ -7,7 +7,7 @@
 
          
 //主页
-void home(int *page, USER * u,ADMIN *ad)
+void home(int *page, USER *u,ADMIN *ad)
 {
 	int flag = 0;		//*判断模式：1为后勤，2为食堂
 	int num = 0;		//*按键序号：1：注册 2：登录 3：账号 4：密码 5:后勤 6：食堂
