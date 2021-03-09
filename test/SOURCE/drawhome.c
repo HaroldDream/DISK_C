@@ -28,9 +28,9 @@ void drawhome(void)
 	lineto(450,330);
 
     setfillstyle(SOLID_FILL,LIGHTBLUE);
-    fillellipse(340,170,50,50);//*头像
+    fillellipse(335,170,50,50);//*头像
 	setcolor(BLUE);
-	circle(340,170,50);
+	circle(335,170,50);
     circle(190,370,8);//todo后勤圈圈
     circle(310,370,8);//todo食堂圈圈
 	

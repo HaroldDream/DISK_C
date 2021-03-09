@@ -1,24 +1,31 @@
 #include "common.h"
+#include "drawuser.h"
 
 void drawuser(void)
 {
     cleardevice();
     setbkcolor(WHITE);
-
-    setfillstyle(SOLID_FILL,LIGHTBLUE);
-    bar(0,0,240,40);
-    bar(260,40,380,40);
-    bar(390,40,510,40);
-    bar(520,40,640,40);
-
-
+    setfillstyle(SOLID_FILL,LIGHTBLUE);//未选中选项卡
+    bar(228,32,286,36);//选中选项卡  
+    bar(0,39,180,480);//左侧功能区
     setfillstyle(SOLID_FILL,BLUE);
-    bar(500,40,640,480);
 
 
-    setcolor(DARKGREY);
+    setfillstyle(SOLID_FILL,DARKGRAY);
+    bar(0,0,180,40);
+
+    setfillstyle(SOLID_FILL,LIGHTGRAY);
+    bar(368,32,426,36);
+    bar(508,32,566,36);
+
+
+    setcolor(WHITE);
     circle(20,20,15);
-    puthz(18,18,"后",16,20,DARKGRAY);
+    puthz(12,12,"食",16,20,WHITE);
 
-    
+    puthz(212+8,12,"仓储管理",16,20,DARKGRAY);
+    puthz(352+8,12,"物流管理",16,20,DARKGRAY);
+    puthz(492+8,12,"信息管理",16,20,DARKGRAY);
+
+    puthz(6,450,"退出",16,20,WHITE);
 }
