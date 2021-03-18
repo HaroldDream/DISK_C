@@ -233,18 +233,18 @@ void selectbutton_register(int x1, int y1, int x2, int y2, int color1, int num)
 
 	switch (num)
 	{
-	case 1: //*用户名框
-		break;
-	case 2: //*联系电话框	    
-	    break;
-	case 3: //*密码框
-		break;
-	case 4: //*确认密码框
-		break;
-	default: 
-		closegraph();
-		printf("something runs wrong in selectbutton_register");
-		exit(1);
+		case 1: //*用户名框
+			break;
+		case 2: //*联系电话框	    
+			break;
+		case 3: //*密码框
+			break;
+		case 4: //*确认密码框
+			break;
+		default: 
+			closegraph();
+			printf("something runs wrong in selectbutton_register");
+			exit(1);
 	}
 }
 

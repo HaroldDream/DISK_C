@@ -11,16 +11,16 @@ void admain(int *page)
         switch(fun)
         {
             case 0: 
-                storage(&fun);
+                storage_ad(&fun);
                 break;
             case 1: 
                 purchase(&fun);
                 break;
             case 2: 
-                logistic(&fun);
+                logistic_ad(&fun);
                 break;
             case 3: 
-                info(&fun);
+                info_ad(&fun);
                 break;
             case 4:
 			    *page = 0;				//退出至登录界面

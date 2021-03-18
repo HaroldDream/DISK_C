@@ -6,6 +6,7 @@ typedef struct userinfo //食堂用户
     char username[15];
     char password[15];
     char phone[20];
+    int mode;
 }USER;
 
 typedef struct admininfo //后勤管理员用户

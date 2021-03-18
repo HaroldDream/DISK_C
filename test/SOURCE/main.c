@@ -9,7 +9,7 @@
 void main()
 {
 	USER u;
-	ADMIN ad;
+	//ADMIN ad;
 
 	int page   = 0;
 	int driver = VGA;
@@ -18,7 +18,7 @@ void main()
 	mouseinit();
 
 	memset(&u,'\0',sizeof(USER));
-	memset(&ad,'\0',sizeof(ADMIN));
+	//memset(&ad,'\0',sizeof(ADMIN));
 
     while (1)
 	{
@@ -26,7 +26,7 @@ void main()
 		{
 			case 0:    //*最初界面
 			    memset(&u,'\0',sizeof(USER));
-				home(&page,&u,&ad);  
+				home(&page,&u);  
 				break; //回到最初界面
 
 			case 1:    //*关闭系统
@@ -39,11 +39,11 @@ void main()
 				break;   
 
 			case 3:   //*后勤管理员主页面
-			    admain(&page);
+			    admain(&page,&u);
 				break;
 
 			case 4:   //*食堂用户主页面
-			    usermain(&page);
+			    usermain(&page,&u);
 				break;
 		}
 	}
