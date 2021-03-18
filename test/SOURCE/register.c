@@ -8,7 +8,7 @@
 /********************************************
 DESCRIPTION:×¢²á
 INPUT:*func
-RETURN:
+RETURN:ÎÞ
 ********************************************/
 
 void registermain (int *page)

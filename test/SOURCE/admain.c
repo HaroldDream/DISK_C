@@ -23,7 +23,7 @@ void admain(int *page)
                 info(&fun);
                 break;
             case 4:
-			    *func = 0;				//退出至登录界面
+			    *page = 0;				//退出至登录界面
 				return ;
         }
 
