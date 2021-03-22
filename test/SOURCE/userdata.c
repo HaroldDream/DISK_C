@@ -7,7 +7,7 @@ DESCRIPTION: 建立用户信息
 INPUT:username,phone,password
 RETURN:无
 ********************************************/
-void input_data(char* username, char* phone, char* password)
+void input_data(char* username, char* phone, char* password,int mode)
 {
 	FILE* fp;
 	USER* u;
@@ -30,6 +30,7 @@ void input_data(char* username, char* phone, char* password)
 	strcpy(u->username, username);
 	strcpy(u->phone, phone);
 	strcpy(u->password, password);
+	u->mode = mode;
 	fseek(fp, 0, SEEK_END);//跳转至文件末尾
 	fwrite(u, sizeof(USER), 1, fp);//把用户信息写入文件
 	if (u != NULL)
@@ -44,6 +45,6 @@ void input_data(char* username, char* phone, char* password)
 		delay(3000);
 		exit(1);
 	}
-}
+} 
 
 

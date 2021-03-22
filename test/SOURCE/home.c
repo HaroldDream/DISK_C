@@ -139,8 +139,8 @@ void home(int *page, USER *u)
 				{
 					if (flag == 1)
 					{
-						strcpy(ad->username , u->username);
-						strcpy(ad->password, u->password);
+						//strcpy(ad->username , u->username);
+						//strcpy(ad->password, u->password);
 						*page = 3; //跳转至后勤管理员界面
 						return;
 					}

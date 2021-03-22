@@ -8,7 +8,7 @@ DESCRIPTION: 用来判断注册信息是否输入完全和正确
 INPUT:*u,*c,*p,*cp
 RETURN:返回整型常数0或1，注册成功返回1，注册失败返回0
 ************************************************************************/
-int register_success(char* u,char *c, char* p, char* cp)
+int register_success(char* u,char *c, char* p, char* cp,int m)
 {
     //?num: 1用户名 2联系方式 3密码 4确认密码
     int box1 = 0;    //*判断用户名是否输入规范
@@ -46,14 +46,14 @@ int register_success(char* u,char *c, char* p, char* cp)
                     puthz(240+220+25,120+180+4,"与密码不一致",24,30,RED);
 		            break;
 	            }
-                if ((fp = fopen("data\\UserData.dat","rb+" )) == NULL) //??????????
+                if ((fp = fopen("data\\UserData.dat","rb+" )) == NULL) //?????????
 					{
 						closegraph();
 						printf("register_success cannot open file fp");
 						delay(3000);
 						exit(1);
 					}
-                    input_data(u, c, p);
+                    input_data(u, c, p , m);
                     return 1;
             }
         }

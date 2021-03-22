@@ -12,8 +12,12 @@
 #include <time.h>
 #include "HZ.H"
 #include "MOUSE.H"
-#include "data.h"
 
+#include "data.h"
+#include "storage.h"
+#include "purchase.h"
+#include "logistic.h"
+#include "info.h"
 
 
 

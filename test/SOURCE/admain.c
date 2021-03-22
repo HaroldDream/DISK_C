@@ -1,10 +1,11 @@
 #include "common.h"
 #include "admain.h"
-#include "drawuser.h"
+#include "drawadmin.h"
+#include "info.h"
 
-void admain(int *page)
+void admain(int *page,USER *u)
 {
-    int fun = 0;
+    int fun = 1;
     
     while(1)
     {
@@ -23,10 +24,8 @@ void admain(int *page)
                 info_ad(&fun);
                 break;
             case 4:
-			    *page = 0;				//退出至登录界面
+                *page = 0;				//退出至登录界面
 				return ;
         }
-
     }
-
 }
