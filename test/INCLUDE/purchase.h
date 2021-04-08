@@ -3,6 +3,7 @@
 
 void purchase(int *fun);
 int show_plist(int cp);
-int get_plist(int line, FD *fdp);
+int show_order(int cp);
+int pop(int n);
 
 #endif

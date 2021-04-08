@@ -44,13 +44,13 @@ void purchase(int *fun)
             newmouse(&MouseX, &MouseY, &press);
             func = 1;
         }
-        if ((mouse_press(510,445,560,480) == 1) && (func == 1) && (page > 1))
+        if ((mouse_press(510,445,560,480) == 1) && (func == 1) && (page > 1))//上一页
         {
             drawad(1,1);
             show_plist(page - 1);
             page -= 1;
         }
-        if ((mouse_press(560,445,610,480) == 1) && (func == 1) && (page < show_plist(page)))
+        if ((mouse_press(560,445,610,480) == 1) && (func == 1) && (page < show_plist(page)))//下一页
         {
             drawad(1,1);
             show_plist(page + 1);
@@ -95,6 +95,12 @@ void purchase(int *fun)
     }
 }
 
+/************************************************************************
+FUNCTION:show_plist
+DESCRIPTION: 显示采购单
+INPUT:cp：当前页码
+RETURN:总页数
+************************************************************************/
 int show_plist(int cp)
 {
     FILE *fp;
@@ -105,7 +111,7 @@ int show_plist(int cp)
     char tlength[10];
     int mon = 0, day = 0;
 
-    time_t timep;
+    time_t timep;//文件时间
     struct tm *p;
     char stime[20];
     time(&timep);
@@ -195,6 +201,12 @@ int show_plist(int cp)
     return page;
 }
 
+/************************************************************************
+FUNCTION:show_order
+DESCRIPTION: 显示采购目录
+INPUT:cp：当前页码
+RETURN:总页数
+************************************************************************/
 int show_order(int cp)
 {
     FILE *fp;
@@ -203,6 +215,34 @@ int show_order(int cp)
     int len = 1, page = 0;
     char length[10];
     char tlength[10];
+
+    time_t timep;//文件时间
+    struct tm *p;
+    char stime[20];
+    time(&timep);
+	p = gmtime(&timep);
+    if (p->tm_mon < 10)
+    {
+        if (p->tm_mday < 10)
+        {
+            sprintf(stime,"0%d0%d",1+p->tm_mon,p->tm_mday-1);   
+        }
+        else 
+        {
+            sprintf(stime,"0%d%d",1+p->tm_mon,p->tm_mday-1);
+        }
+    }
+    if (p->tm_mon >= 10)
+    {
+        if (p->tm_mday < 10)
+        {
+            sprintf(stime,"%d0%d",1+p->tm_mon,p->tm_mday-1);   
+        }
+        else 
+        {
+            sprintf(stime,"%d%d",1+p->tm_mon,p->tm_mday-1);
+        }
+    }
 
     if ((fdp = (FD*)malloc(sizeof(FD))) == NULL)
     {
@@ -318,7 +358,7 @@ int pop(int n)
 			delay(10);
             //putimage(200,180,buffer,COPY_PUT);
             // free(buffer);
-				tanchuang(11);
+				pop(2);
 				d = atoi(U);
 				return d;
 			return 1;
