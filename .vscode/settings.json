@@ -10,7 +10,18 @@
         "AD.C": "cpp",
         "drawuser.h": "c",
         "admain.h": "c",
-        "drawadmin.h": "c"
+        "drawadmin.h": "c",
+        "*.tcc": "c",
+        "algorithm": "c",
+        "memory": "c",
+        "random": "c",
+        "fstream": "c",
+        "iosfwd": "c",
+        "istream": "c",
+        "ostream": "c",
+        "numeric": "c",
+        "sstream": "c",
+        "streambuf": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
