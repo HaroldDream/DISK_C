@@ -135,7 +135,7 @@ void home(int *page, USER *u)
 		    else if (mouse_press(431,299,471,341) == 1 && content1*content2 == 1)
 		    {
 			    MouseS = 0;
-				if (judge_rightpassword(u->username, u->password)) 
+				if (judge_rightpassword(u->username, u->password, flag)) 
 				{
 					if (flag == 1)
 					{
@@ -152,8 +152,6 @@ void home(int *page, USER *u)
 				}
 				else 
 				{
-					puthz(470+10, 240+60+12, "ÃÜÂëÊäÈë´íÎó", 16, 17, BLUE);
-					delay(1000);
 					*page = 0;
 					return ;
 				}

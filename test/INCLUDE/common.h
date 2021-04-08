@@ -18,6 +18,7 @@
 #include "purchase.h"
 #include "logistic.h"
 #include "info.h"
+#include "input.h"
 
 
 

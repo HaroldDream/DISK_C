@@ -151,3 +151,56 @@ void inputmm(char* id, int x1, int y1, int charnum, int color)
 		}
 	}
 }
+
+
+int xouttextxy(int x,int y,char *s,int color)//8x16点阵字库
+{
+	FILE *asc=NULL;
+	int i,j,k;
+	char *mat,*temp;
+	int len;
+	long offset;
+	int mask;
+
+	len=strlen(s);
+	if(!len) return 0;//空字符串不执行操作
+	if((asc=fopen("C:\\test\\HZK\\ASC16","rb"))==NULL)
+	{
+		closegraph();
+		printf("outtextxy can't open asc16!,xouttextxy");
+		delay(3000);
+		exit(1);
+	}
+	if((mat=(char *)malloc(16*sizeof(char)*len))==NULL)//存放点阵
+	{
+		closegraph();
+		printf("Failed!,xouttextxy");
+		fclose(asc);
+		getch();
+		exit(1);
+	}
+	temp=mat;
+	for(i=0;i<len;i++)
+	{
+		offset=(long)16*s[i];//计算字符的文件偏移
+		fseek(asc,offset,SEEK_SET);
+		fread(temp,sizeof(char),16,asc);//将所有字符点阵存入mat
+		temp+=16;
+	}
+	fclose(asc);
+	for(i=0;i<len;i++)//通过放点显示字符
+	{
+		for(j=0;j<16;j++)
+		{
+			mask=0x80;
+			for(k=0;k<8;k++)
+			{
+				if(mat[i*16+j]&mask)
+				putpixel(x+8*i+k,y+j,color);
+				mask>>=1;
+			}
+		}
+	}
+	free(mat);
+	return len;
+}

@@ -12,7 +12,7 @@ void input_data(char* username, char* phone, char* password,int mode)
 	FILE* fp;
 	USER* u;
 	char nu[3];
-	if ((fp = fopen("Data\\UserData.dat", "rb+" )) == NULL)//建立数据库
+	if ((fp = fopen("Data\\UserData.dat", "rt+" )) == NULL)//建立数据库
 	{
 		closegraph();
 		printf("cannot open file UserData.dat,input_data");

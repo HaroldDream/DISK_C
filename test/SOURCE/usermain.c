@@ -1,22 +1,29 @@
 #include "common.h"
 #include "usermain.h"
-#include "drawuser.h"
 
 void usermain(int *page, USER *u)
 {
+    int fun = 1;
     
-
-
-
-    clrmous(MouseX,MouseY);
-    delay(100);
-    drawuser();
-
     while(1)
     {
-        newmouse(&MouseX, &MouseY, &press);
+        switch(fun)
+        {
+            case 0: 
+                *page = 0;				//退出至登录界面
+				return;
+            case 1: 
+                storage_us(&fun);
+                break;
+            case 2: 
+                logistic_us(&fun);
+                break;
+            case 3: 
+                info_us(&fun);
+                break;
 
-        
+
+        }
     }
 
 }

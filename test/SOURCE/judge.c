@@ -46,13 +46,13 @@ int register_success(char* u,char *c, char* p, char* cp,int m)
                     puthz(240+220+25,120+180+4,"与密码不一致",24,30,RED);
 		            break;
 	            }
-                if ((fp = fopen("data\\UserData.dat","rb+" )) == NULL) //?????????
+                /*if ((fp = fopen("data\\UserData.dat","rb+" )) == NULL) //?????????
 					{
 						closegraph();
 						printf("register_success cannot open file fp");
 						delay(3000);
 						exit(1);
-					}
+					}*/
                     input_data(u, c, p , m);
                     return 1;
             }
@@ -167,7 +167,7 @@ int judge_sameuser(char* new_user)
 	int i;
 	FILE* fp;
 	USER* u = NULL;
-	if ((fp = fopen("data\\UserData.dat", "wb+")) == NULL)//建立数据库//??????????????
+	if ((fp = fopen("data\\UserData.dat", "rt")) == NULL)//建立数据库
 	{
 		closegraph();
 		printf("judge_sameuser cannot open file fp");
@@ -224,13 +224,13 @@ DESCRIPTION: 判断用户名和密码是否匹配
 INPUT:*name ,*pass
 RETURN:返回整型常数0或1，用户名和密码匹配返回1，用户名和密码不匹配返回0
 ************************************************************************/
-int judge_rightpassword(char* name, char* pass)
+int judge_rightpassword(char* name, char* pass, int mode)
 {
 	int len;												//用户个数
 	int i;
 	FILE* fp;
 	USER* u;
-	if ((fp = fopen("Data\\UserData.dat", "rb+")) == NULL)
+	if ((fp = fopen("Data\\UserData.dat", "rt")) == NULL)
 	{
 		closegraph();
 		printf("judge_rightpassword cannot open file fp");
@@ -252,6 +252,17 @@ int judge_rightpassword(char* name, char* pass)
 		fread(u, sizeof(USER), 1, fp);
 		if (strcmp(name, u->username) == 0)//用户名匹配
 		{
+			if (u->mode != mode)
+			{
+				if (u != NULL)
+				{
+					free(u);
+					u = NULL;
+				}
+				puthz(470+10, 240+60+12, "模式选择错误", 16, 17, BLUE);
+				delay(1000);
+				break;
+			}
 			if (strcmp(pass, u->password) != 0)//密码不配
 			{
 				if (u != NULL)
@@ -259,6 +270,8 @@ int judge_rightpassword(char* name, char* pass)
 					free(u);
 					u = NULL;
 				}
+				puthz(470+10, 240+60+12, "密码输入错误", 16, 17, BLUE);
+				delay(1000);
 				break;
 			}
 			else if (strcmp(pass, u->password) == 0)//密码匹配
@@ -288,6 +301,7 @@ int judge_rightpassword(char* name, char* pass)
 	if (i == len)
 	{
 		puthz(460+10, 240+12, "账户未注册", 16, 17, BLUE);//走到最后一位
+		delay(1000);
 	}
 
 	if (u != NULL)

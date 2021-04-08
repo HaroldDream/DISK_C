@@ -1,7 +1,5 @@
 #include "common.h"
 #include "admain.h"
-#include "drawadmin.h"
-#include "info.h"
 
 void admain(int *page,USER *u)
 {
@@ -12,8 +10,8 @@ void admain(int *page,USER *u)
         switch(fun)
         {
             case 0: 
-                storage_ad(&fun);
-                break;
+                *page = 0;				//退出至登录界面
+				return ;
             case 1: 
                 purchase(&fun);
                 break;
@@ -24,8 +22,8 @@ void admain(int *page,USER *u)
                 info_ad(&fun);
                 break;
             case 4:
-                *page = 0;				//退出至登录界面
-				return ;
+                storage_ad(&fun);
+                break;
         }
     }
 }
