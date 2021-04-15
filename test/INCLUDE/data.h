@@ -18,7 +18,7 @@ typedef struct supplier //供应商
 typedef struct foodinfo //食材  
 {
     char name[7];  //名称
-    char type[7];  //种类，如蔬菜、肉类
+    char type[7];  //种类
     char s[11];  //供应商
     char p[5];    //价格
     char num[8];    //数量

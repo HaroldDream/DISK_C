@@ -1,6 +1,6 @@
 #include "common.h"
 #include "admain.h"
-#include "drawadmin.h"
+#include "drawad.h"
 
 void info_ad(int *fun)
 {

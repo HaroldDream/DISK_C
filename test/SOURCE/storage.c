@@ -1,6 +1,7 @@
 #include "common.h"
 #include "admain.h"
-#include "drawusermin.h"
+#include "drawuser.h"
+#include "drawad.h"
 
 void storage_ad(int *fun)
 {

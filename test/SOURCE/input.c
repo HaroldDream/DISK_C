@@ -161,13 +161,16 @@ int xouttextxy(int x,int y,char *s,int color)//8x16µãÕó×Ö¿â
 	int len;
 	long offset;
 	int mask;
+	int errNum;
 
 	len=strlen(s);
 	if(!len) return 0;//¿Õ×Ö·û´®²»Ö´ÐÐ²Ù×÷
 	if((asc=fopen("C:\\test\\HZK\\ASC16","rb"))==NULL)
 	{
+		errNum = errno;
 		closegraph();
 		printf("outtextxy can't open asc16!,xouttextxy");
+		printf("open fail errno = %d reason = %s \n", errNum, strerror(errNum));
 		delay(3000);
 		exit(1);
 	}

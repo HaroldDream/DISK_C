@@ -2,8 +2,9 @@
 #define _PURCHASE_H_
 
 void purchase(int *fun);
-int show_plist(int cp);
-int show_order(int cp);
+void cgml(int *op);
+void xtyc(int *op);
+void cgd(int *op);
 int pop(int n);
 
 #endif

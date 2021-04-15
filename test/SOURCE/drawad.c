@@ -1,5 +1,5 @@
 #include "common.h"
-#include "drawadmin.h"
+#include "drawad.h"
 
 void drawad(int num, int op)
 {
@@ -29,7 +29,7 @@ void drawad(int num, int op)
     circle(22,26,15);
     puthz(15,18,"后",16,20,WHITE);
     settextstyle(SMALL_FONT,0,6);
-    outtextxy(48,8,stime);
+    outtextxy(48,10,stime);
     
     switch(p->tm_wday) //显示星期
     {
@@ -61,16 +61,16 @@ void drawad(int num, int op)
     puthz(412,16,"物流管理",16,20,DARKGRAY);
     puthz(512,16,"信息管理",16,20,DARKGRAY);
 
-    puthz(300,450,"第",16,18,BLUE);
-    puthz(340,450,"页",16,18,BLUE);
+    puthz(300,452,"第",16,18,BLUE);
+    puthz(340,452,"页",16,18,BLUE);
     setcolor(BLUE);
     setlinestyle(SOLID_LINE,0,1);
-    line(368,450,358,465);
-    puthz(370,450,"共",16,18,BLUE);
-    puthz(410,450,"页",16,18,BLUE);
-    puthz(510,450,"上一页",16,18,BLUE);
-    puthz(570,450,"下一页",16,18,BLUE);
-    puthz(8,450,"退出",16,20,WHITE);
+    line(368,452,358,467);
+    puthz(370,452,"共",16,18,BLUE);
+    puthz(410,452,"页",16,18,BLUE);
+    puthz(510,452,"上一页",16,18,BLUE);
+    puthz(570,452,"下一页",16,18,BLUE);
+    puthz(8,452,"退出",16,20,WHITE);
 
     setcolor(DARKGRAY); //横线
     setlinestyle(SOLID_LINE,0,3);
@@ -193,7 +193,7 @@ void drawad_purchase(int op)
             line(210,50,210,440);//种类
             line(280,50,280,440);//供应商
             line(385,50,385,440);//价格
-            line(450,50,450,440);//数量
+            line(450,50,450,440);//单位
             line(515,50,515,440);//预测需求
             line(600,50,600,440);//操作
 
@@ -201,7 +201,7 @@ void drawad_purchase(int op)
             puthz(230,58,"种类",16,18,BLUE);
             puthz(305,58,"供应商",16,18,BLUE);
             puthz(400,58,"价格",16,18,BLUE);
-            puthz(465,58,"数量",16,18,BLUE);
+            puthz(465,58,"单位",16,18,BLUE);
             puthz(525,58,"预测需求",16,18,BLUE);
             puthz(605,58,"操作",16,18,BLUE);
             break;
@@ -216,17 +216,18 @@ void drawad_purchase(int op)
             line(220,50,220,440);//种类
             line(290,50,290,440);//供应商
             line(390,50,390,440);//价格
-            line(445,50,445,440);//数量
-            line(520,50,520,440);//预测需求
-            line(598,50,598,440);
+            line(440,50,440,440);//单位
+            line(490,50,490,440);//数量
+            line(560,50,560,440);//总价
 
             puthz(160,58,"名称",16,18,BLUE);
             puthz(235,58,"种类",16,18,BLUE);
             puthz(315,58,"供应商",16,18,BLUE);
             puthz(400,58,"单价",16,18,BLUE);
-            puthz(465,58,"采购数量",16,18,BLUE);
-            puthz(525,58,"总价",16,18,BLUE);
-            puthz(605,58,"操作",16,18,BLUE);
+            puthz(450,58,"单位",16,18,BLUE);
+            puthz(490,58,"采购数量",16,18,BLUE);
+            puthz(590,58,"总价",16,18,BLUE);
+
             break;
         case 3://条件筛选
             setfillstyle(SOLID_FILL,BLUE);
