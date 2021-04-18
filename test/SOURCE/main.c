@@ -11,7 +11,7 @@ void main()
 	USER u;
 	//ADMIN ad;
 
-	int page   = 0;
+	int page   = 3;
 	int driver = VGA;
 	int mode   = VGAHI;
 	initgraph(&driver,&mode,"C:\\BORLANDC\\bgi");

@@ -20,6 +20,7 @@
 #include "logistic.h"
 #include "info.h"
 #include "input.h"
+#include "record.h"
 
 #define NUM0 0x5230
 #define NUM1 0x4f31

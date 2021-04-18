@@ -145,11 +145,13 @@ void cgml(int *op)
 void xtyc(int *op)
 {
     int page = 1;
+    int num = 1;
     int i = 0;
 
     clrmous(MouseX,MouseY);
     delay(100);
     drawad(1,0);
+    show_flist(1,1);
 
     while(1)
     {
@@ -158,15 +160,17 @@ void xtyc(int *op)
 
         if ((mouse_press(510,445,560,480) == 1) && (page > 1))//上一页
         {
-            drawad(1,1);
-            show_plist(page - 1);
+            drawad(1,0);
+            show_flist(num,page - 1);
             page -= 1;
+            delay(100);
         }
-        if ((mouse_press(560,445,610,480) == 1) && (page < show_plist(page)))//下一页
+        if ((mouse_press(560,445,610,480) == 1) && (page < show_flist(num, page)))//下一页
         {
-            drawad(1,3);
-            show_plist(page + 1);
+            drawad(1,0);
+            show_flist(num,page + 1);
             page += 1;
+            delay(100);
         }
 
 
@@ -176,7 +180,7 @@ void xtyc(int *op)
             return;
         }
 
-        if(mouse_press(0,91,140,129) == 1)//系统预测
+        if(mouse_press(0,91,140,129) == 1)//采购目录
         {
             *op = 2;
             return;
