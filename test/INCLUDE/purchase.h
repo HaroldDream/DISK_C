@@ -3,7 +3,7 @@
 
 void purchase(int *fun);
 void cgml(int *op);
-void xtyc(int *op);
+void xtyc(int *op, int *num);
 void cgd(int *op);
 int pop(int n);
 

@@ -77,6 +77,7 @@ int show_plist(int cp)
     setfillstyle(SOLID_FILL,WHITE);
     bar(320,444,338,480);
     bar(390,444,408,480);
+    setcolor(BLUE);
     outtextxy(325,452,length);
     outtextxy(395,452,tlength);
 
@@ -313,15 +314,15 @@ int up_order(int n, int a,int page)
     //len = ftell(fp) / (sizeof(FD)+1);//采购目录数据条数
     len = ftell(fp2) / (sizeof(FD)+1);//采购单数据条数
 
-    cn = (page - 1)*12 + n;//position in plist
+    cn = (page - 1)*12 + n + 1;//position in plist
     fseek(fp,(cn-1) * (sizeof(FD)+1),SEEK_SET);
     fread(fdp, sizeof(FD),1,fp);
     
-    xouttextxy(300,400,fdp->state,BLUE);
-    sprintf(temp2,"%d",len);
-    xouttextxy(300,420,temp2,BLUE);
-    sprintf(temp2,"%d",ftell(fp2));
-    xouttextxy(320,420,temp2,BLUE);
+    //xouttextxy(300,400,fdp->state,BLUE);
+    //sprintf(temp2,"%d",len);
+    //xouttextxy(300,420,temp2,BLUE);
+    //sprintf(temp2,"%d",ftell(fp2));
+    //xouttextxy(320,420,temp2,BLUE);
     //sprintf(temp,"%d",strcmp(fdp->state,"0\0"));
     //xouttextxy(300,440,fdp->state,BLUE);
 
@@ -379,7 +380,6 @@ int up_order(int n, int a,int page)
             {
                 /*sprintf(temp,"%d",a);
                 xouttextxy(30,300,temp,BLUE);
-                
                 xouttextxy(30,320,fdp2->num,BLUE);
                 sprintf(temp,"%d",a);
                 xouttextxy(30,340,temp,BLUE);
@@ -441,8 +441,8 @@ int up_order(int n, int a,int page)
 /************************************************************************
 FUNCTION:show_flist
 DESCRIPTION: 显示预测界面
-INPUT:num：食堂序号
-RETURN:
+INPUT:num：食堂序号，cp：当前页码
+RETURN:page：总页数
 ************************************************************************/
 int show_flist(int num, int cp)
 {
@@ -515,6 +515,22 @@ int show_flist(int num, int cp)
     outtextxy(325,451,length);
     outtextxy(395,451,tlength);
 
+    switch (num)
+    {
+        case 1:
+            puthz(40,225,"百景园",16,20,WHITE);
+            break;
+        case 2:
+            puthz(50,225,"韵苑",16,20,WHITE);
+            break;
+        case 3:
+            puthz(50,225,"喻园",16,20,WHITE);
+            break;
+        case 4:
+            puthz(30,225,"学二食堂",16,18,WHITE);
+            break;
+    }
+
     for(i = 0 + (cp -1) * 2, j = 0 ; (i < len) && (i < cp*2); i++, j++)
     {
         //memset(ffp,'\0',sizeof(FF));
@@ -527,36 +543,26 @@ int show_flist(int num, int cp)
         puthz(280,58+j*195,"单位：",16,18,BLUE);
         puthz(340,58+j*195,ffp->unit,16,18,BLUE);
         
-        puthz(150,108+j*195,"预测曲线",16,18,BLUE);
+        puthz(150,140+j*195,"预测曲线",16,18,BLUE);
         puthz(570,88+j*195,"预测值",16,20,LIGHTRED);
         puthz(390,58+j*195,"当前已分配：",16,18,BLUE);
         outtextxy(500, 57+j*195,ffp->dis);
         setlinestyle(SOLID_LINE,0,1);
         line(140,80+j*195,640,80+j*195);
         puthz(560,58+j*195,"点击分配",16,18,BLUE);
-        
-		setcolor(DARKGRAY);
-        puthz(148, 201+j*195,"七日消耗", 16,18,DARKGRAY); //output number
-        outtextxy(240,202+j*195,ffp->d1);
+
         y[0] = atoi(ffp->d1)/10;
-        outtextxy(240+50,202+j*195,ffp->d2);
         y[1] = atoi(ffp->d2)/10;
-        outtextxy(240+50*2,202+j*195,ffp->d3);
         y[2] = atoi(ffp->d3)/10;
-        outtextxy(240+50*3,202+j*195,ffp->d4);
         y[3] = atoi(ffp->d4)/10;
-        outtextxy(240+50*4,202+j*195,ffp->d5);
         y[4] = atoi(ffp->d5)/10;
-        outtextxy(240+50*5,202+j*195,ffp->d6);
         y[5] = atoi(ffp->d6)/10;
-        outtextxy(240+50*6,202+j*195,ffp->d7);
         y[6] = atoi(ffp->d7)/10;
-        
 
         forecast(y,yy); //calculate
-        tempyy7 = yy[7];
 
-        itoa(yy[7]*10, day8, 10); //write result
+        tempyy7 = yy[7]; //write result
+        itoa(yy[7]*10, day8, 10); 
         fseek(fp, i * (sizeof(FF)+1), SEEK_SET);
         fseek(fp, 26, SEEK_CUR);
         k = 0;
@@ -567,8 +573,8 @@ int show_flist(int num, int cp)
             k++;
         }
         
-        setcolor(LIGHTBLUE);
-        puthz(148, 222+j*195,"拟合计算", 16,18,BLUE); //output calculation number
+        setcolor(LIGHTBLUE); //*output calculation number
+        puthz(148, 222+j*195,"拟合计算", 16,18,BLUE); 
         for (k = 0; k < 7; k++)
         {
             itoa(yy[k]*10, tempy, 10);
@@ -577,8 +583,18 @@ int show_flist(int num, int cp)
         setcolor(LIGHTRED);
         outtextxy(580, 105+j*195, day8);
 
+		setcolor(DARKGRAY); //*output number
+        puthz(148, 201+j*195,"七日消耗", 16,18,DARKGRAY);
+        outtextxy(240,202+j*195,ffp->d1);
+        outtextxy(240+50,202+j*195,ffp->d2);
+        outtextxy(240+50*2,202+j*195,ffp->d3);
+        outtextxy(240+50*3,202+j*195,ffp->d4);
+        outtextxy(240+50*4,202+j*195,ffp->d5);
+        outtextxy(240+50*5,202+j*195,ffp->d6);
+        outtextxy(240+50*6,202+j*195,ffp->d7);
+
         y[0] = atoi(ffp->d1)/10;
-        setcolor(LIGHTGRAY); //output original chart
+        setcolor(LIGHTGRAY); //*output original chart
         for (k = 0; k < 7; k++)
         {
             setfillstyle(SOLID_FILL,LIGHTGRAY);
@@ -591,7 +607,7 @@ int show_flist(int num, int cp)
             line(250+k*50, 202 - y[k]/10 +195*j, 250+(k+1)*50, 200 - y[k+1]/10 + 195*j);
         }
 
-        setcolor(LIGHTBLUE); //out forecast chart
+        setcolor(LIGHTBLUE); //*out forecast chart
         for (k = 0; k < 7; k++)
         {
             setfillstyle(SOLID_FILL,LIGHTBLUE);
@@ -626,7 +642,7 @@ int show_flist(int num, int cp)
 /************************************************************************
 FUNCTION:forecast
 DESCRIPTION: 根据数组x[], y[]的数据，用最小二乘法求拟合曲线
-    近似解析表达式y = a0 + a1 * x + a2 * x^2 + a3 * x^3;
+            近似解析表达式y = a0 + a1 * x + a2 * x^2 + a3 * x^3;
 INPUT:
 RETURN:预测值
 ************************************************************************/
@@ -635,7 +651,7 @@ int forecast(int *y,int *yy)
     int maxn = 7;
     int rank = 3;
     int column;
-    float mainelement, tempa, tempb, Mik, result;
+    float mainele, tempa, tempb, m, result;
     float sum;
     int x[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     float atemp[2 * (3 + 1)] = {0};
@@ -659,7 +675,7 @@ int forecast(int *y,int *yy)
     }
 
     atemp[0] = maxn;
-    for(i = 0; i < rank + 1; i++)  //构建线性方程组系数矩阵，b[]不变
+    for(i = 0; i < rank + 1; i++)  //线性方程组系数矩阵a
     {  
         k = i;
         for(j = 0; j < rank + 1; j++)
@@ -673,13 +689,13 @@ int forecast(int *y,int *yy)
     for(k = 0; k < rank + 1 - 1; k++) //n - 1列
     { 
         column = k;
-        mainelement = a[k][k];
+        mainele = a[k][k];
 
-        for(i = k; i < rank + 1; i++) //找主元素
+        for(i = k; i < rank + 1; i++) //找主元
         {
-            if(fabs(a[i][k]) > mainelement)
+            if(fabs(a[i][k]) > mainele)
             {
-                mainelement = fabs(a[i][k]);
+                mainele = fabs(a[i][k]);
                 column = i;
             }
         }
@@ -696,12 +712,12 @@ int forecast(int *y,int *yy)
 
         for(i = k + 1; i < rank + 1; i++) //消元
         { 
-            Mik = a[i][k] / a[k][k];
+            m = a[i][k] / a[k][k];
             for(j = k; j < rank + 1; j++)  
             {
-                a[i][j] -= Mik * a[k][j];
+                a[i][j] -= m * a[k][j];
             }
-            b[i] -= Mik * b[k];
+            b[i] -= m * b[k];
         }
     }
     b[rank + 1 - 1] /= a[rank + 1 - 1][rank + 1 - 1];  //回代
@@ -713,7 +729,7 @@ int forecast(int *y,int *yy)
             sum += a[i][j] * b[j];
         }
         b[i] = (b[i] - sum) / a[i][i];
-    }//高斯列主元消去法结束
+    }
     
     //sprintf(fx,"%d +%dx+%dx^2+%dx^3", b[0], b[1], b[2], b[3]);
     //outtextxy(200,300,fx);
@@ -729,79 +745,98 @@ int forecast(int *y,int *yy)
     return result;
 }
 
-
-/*
-int read_flist()
+/************************************************************************
+FUNCTION:up_flist
+DESCRIPTION: 系统预测界面分配数量函数
+INPUT:ctn：食堂编号，n：第一个或第二个，page：当前页码，a：数量
+RETURN:
+************************************************************************/
+int up_flist(int ctn, int n, int page, int a)
 {
+    FILE *fp;
+    FF *ffp;    
+    int errNum;
+    int i = 0;
+    int cn = 0;//总位置
+	int len = 0;
+    char ca[8];
+    char floc[40];
+    char temp[10];
 
-}
-*/
+    time_t timep;//文件时间
+    struct tm *p;
+    char stime[20];
+    time(&timep);
+	p = gmtime(&timep);
+    if (p->tm_mon < 10)
+    {
+        if (p->tm_mday < 10)
+        {
+            sprintf(stime,"0%d0%d",1+p->tm_mon,p->tm_mday);   
+        }
+        else 
+        {
+            sprintf(stime,"0%d%d",1+p->tm_mon,p->tm_mday);
+        }
+    }
+    else 
+    {
+        if (p->tm_mday < 10)
+        {
+            sprintf(stime,"%d0%d",1+p->tm_mon,p->tm_mday);   
+        }
+        else 
+        {
+            sprintf(stime,"%d%d",1+p->tm_mon,p->tm_mday);
+        }
+    }
 
-//todo ad_plist（显示建议）
-
-
-/*int get_plist(int line, FD *fdp)
-{
-	FILE *fp;
-	int row=1, len = 0;//row行数, length文件总字节数,数据行数
-	char ch, *n;
-    char length[10], tlength[10];
-	int i, j;
-	
-	//打开文件
-    if ((fp = fopen("c:\\test\\data\\plist.txt", "rt+" )) == NULL)
+    if ((ffp = (FD*)malloc(sizeof(FF))) == NULL)
     {
         closegraph();
-        printf("cannot open file plist.txt,show_p1");
+        printf("memoryallocation runs wrong in fdp,up_order");
         delay(3000);
         exit(1);
     }
-	
-	fseek(fp, 0, SEEK_END);
-    len = ftell(fp) / sizeof(FD);//数据条数
-    itoa(len,length,10);
-    itoa(ftell(fp),tlength,10);    
-    outtextxy(500,180,tlength);
-    outtextxy(500,200,length);
-	
-    //获取名称
-    fseek(fp, line * sizeof(FD), SEEK_SET);
-    //fread(fdp, sizeof(char), 4, fp);
-    
-    //获取名称2
-    for(j = 0; ch != ' '; j++)
-    {
-        fseek(fp, (line+j)*sizeof(char), SEEK_SET);
-        fread(&ch, sizeof(char), 1, fp);
-        fdp->name[j] = ch;
-    }
-    
-    
-    for(j = 0; ch != '\t'; j++)
-    {
-        fseek(fp, j*sizeof(char), SEEK_CUR);
-        fread(&ch, sizeof(char), 1, fp);
-        fdp->type[j] = ch;
-    }
-    
-    for(j = 0; ch != '\t'; j++)
-    {
-        fseek(fp, j*sizeof(char), SEEK_CUR);
-        fread(&ch, sizeof(char), 1, fp);
-        fdp->type[j] = ch;
-    }
-    //解决多字问题
-    n = strstr(fdp->name, " ");
-    stpcpy(n, "\0");
 
-	
+    sprintf(floc,"c:\\test\\data\\canteen\\ct%d\\%sf.dat", ctn, stime);
+    if ((fp = fopen(floc, "rb+" )) == NULL)
+    {
+        errNum = errno;
+        closegraph();
+        printf("cannot open file flist,up_flist\n");
+        printf("open fail errno = %d reason = %s \n", errNum, strerror(errNum));
+        delay(5000);
+        exit(1);
+    }
+
+    fseek(fp, 0, SEEK_END);
+    len = ftell(fp) / (sizeof(FF)+1);
+
+    cn = (page - 1)*2 + n;//position in file
+    fseek(fp,(cn-1) * (sizeof(FF)+1),SEEK_SET);
+    fseek(fp, 33, SEEK_CUR);
+
+    itoa(a, ca, 10);
+    i = 0;
+    while (*(ca+i) != '\0')
+    {
+        *(ffp->dis+i) = *(ca+i);
+        fputc(*(ca+i), fp);
+        i++;
+    }
+
     if (fclose(fp) != 0)
     {
         closegraph();
-        printf("\n cannot close plist.dat,show_p1");
+        printf("\n cannot close flist,up_flist");
         delay(3000);
         exit(1);
     }
-	
-	return 1;
-}*/
+
+    return 0;
+}
+
+//todo ad_plist（显示建议）
+
+//todo条件筛选

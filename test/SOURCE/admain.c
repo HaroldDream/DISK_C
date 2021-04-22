@@ -1,7 +1,7 @@
 #include "common.h"
 #include "admain.h"
 
-void admain(int *page,USER *u)
+void admain(int *page)
 {
     int fun = 1;
     

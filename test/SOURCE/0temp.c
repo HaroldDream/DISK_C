@@ -90,3 +90,143 @@ void cgml(int *fun)
         }
     }
 }
+
+
+
+int get_plist(int line, FD *fdp)
+{
+	FILE *fp;
+	int row=1, len = 0;//row行数, length文件总字节数,数据行数
+	char ch, *n;
+    char length[10], tlength[10];
+	int i, j;
+	
+	//打开文件
+    if ((fp = fopen("c:\\test\\data\\plist.txt", "rt+" )) == NULL)
+    {
+        closegraph();
+        printf("cannot open file plist.txt,show_p1");
+        delay(3000);
+        exit(1);
+    }
+	
+	fseek(fp, 0, SEEK_END);
+    len = ftell(fp) / sizeof(FD);//数据条数
+    itoa(len,length,10);
+    itoa(ftell(fp),tlength,10);    
+    outtextxy(500,180,tlength);
+    outtextxy(500,200,length);
+	
+    //获取名称
+    fseek(fp, line * sizeof(FD), SEEK_SET);
+    //fread(fdp, sizeof(char), 4, fp);
+    
+    //获取名称2
+    for(j = 0; ch != ' '; j++)
+    {
+        fseek(fp, (line+j)*sizeof(char), SEEK_SET);
+        fread(&ch, sizeof(char), 1, fp);
+        fdp->name[j] = ch;
+    }
+    
+    
+    for(j = 0; ch != '\t'; j++)
+    {
+        fseek(fp, j*sizeof(char), SEEK_CUR);
+        fread(&ch, sizeof(char), 1, fp);
+        fdp->type[j] = ch;
+    }
+    
+    for(j = 0; ch != '\t'; j++)
+    {
+        fseek(fp, j*sizeof(char), SEEK_CUR);
+        fread(&ch, sizeof(char), 1, fp);
+        fdp->type[j] = ch;
+    }
+    //解决多字问题
+    n = strstr(fdp->name, " ");
+    stpcpy(n, "\0");
+
+	
+    if (fclose(fp) != 0)
+    {
+        closegraph();
+        printf("\n cannot close plist.dat,show_p1");
+        delay(3000);
+        exit(1);
+    }
+	
+	return 1;
+}
+
+
+int pop(int n)
+{
+	int a = 0, len = 0;//数量
+    char i[10];
+    void *buffer;
+	unsigned s;
+    clrmous(MouseX, MouseY);
+
+    setlinestyle(SOLID_LINE,0,1);
+    setfillstyle(SOLID_FILL, WHITE);
+    bar(200,180,440,300);
+    rectangle(200,180,440,300);
+
+    switch(n)
+    {
+        case 1:
+            rectangle(240,220,400,250);
+            puthz(247,227,"采购数量：",16,18,BLUE);	
+            rectangle(340,265,380,285);
+            rectangle(260,265,300,285);
+            puthz(344,267,"返回",16,20,BLUE);
+            puthz(264,267,"确定",16,20,BLUE);
+            break;
+        case 2:
+            puthz(260,230,"采购成功",16,20,BLUE);
+            delay(1000);
+            return 1;
+    }
+
+	while (n == 1)
+	{
+		newmouse(&MouseX, &MouseY, &press);
+        if (mouse_press(240,220,400,250) == 1)
+        {
+            clrmous(MouseX,MouseY);
+            len= hz_input(335,220,400,250,i,len,WHITE);
+        }
+
+		if (mouse_press(260,265,300,285) == 1)//确定
+		{
+            if (len != 0)
+            {
+                clrmous(MouseX, MouseY);
+                bar(200,180,440,300);
+                rectangle(200,180,440,300);
+                puthz(260,230,"采购成功",16,20,BLUE);
+                delay(1000);
+                a = atoi(i);
+                return a;
+            }
+            else 
+            {
+                clrmous(MouseX, MouseY);
+                delay(10);
+                bar(200,180,440,300);
+                rectangle(200,180,440,300);
+                puthz(250,230,"请输入数量",16,20,BLUE);
+                delay(1000);
+                return 0;                
+            }
+		}
+        
+		if (mouse_press(340,265,380,285) == 1)//返回
+		{
+			clrmous(MouseX, MouseY);
+			delay(10);
+			return 0;
+		}
+    }
+}

@@ -122,19 +122,9 @@ void drawad(int num, int op)
             setfillstyle(SOLID_FILL,LIGHTBLUE);
             bar(320,36,380,40);
 
-            setcolor(WHITE);//筛选图标
-            setfillstyle(SOLID_FILL,WHITE);
-            bar(16,357,30,359);
-            line(16,359,22,367);
-            line(30,359,24,367);
-            bar(22,367,24,375);
-            floodfill(23,361,WHITE);
-
-
             puthz(15,60,"系统预测",24,28,WHITE);            
             puthz(15,100,"采购目录",24,28,WHITE);
             puthz(27,140,"采购单",24,32,WHITE);
-            puthz(43,358,"条件筛选",16,20,WHITE);
 
             drawad_purchase(op);  
             break;
@@ -176,22 +166,24 @@ void drawad_purchase(int op)
 {           
     switch(op)
     {
-        case 0://系统预测
+        case 0://todo系统预测
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,51,139,89);
             puthz(15,60,"系统预测",24,28,WHITE); 
-
-            setfillstyle(SOLID_FILL,LIGHTBLUE);
-            bar(1,350,139,400); //cover
 
             setfillstyle(SOLID_FILL,WHITE);
             bar(141,51,640,439); //cover
             setcolor(DARKGRAY); 
             setlinestyle(SOLID_LINE,0,3);
             line(140,245,640,245);
+
+            puthz(25,200,"当前食堂",16,20,WHITE);
+            puthz(15,250,"上一个",16,18,WHITE);
+            puthz(80,250,"下一个",16,18,WHITE);
+
             
             break;
-        case 1://*采购目录
+        case 1://采购目录
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,91,139,129);
             puthz(15,100,"采购目录",24,28,WHITE);
@@ -213,8 +205,18 @@ void drawad_purchase(int op)
             puthz(465,58,"单位",16,18,BLUE);
             puthz(525,58,"预测需求",16,18,BLUE);
             puthz(605,58,"操作",16,18,BLUE);
+
+            puthz(43,208,"条件筛选",16,20,WHITE);
+            setcolor(WHITE);//筛选图标
+            setfillstyle(SOLID_FILL,WHITE);
+            bar(16,207,30,209);
+            line(16,209,22,217);
+            line(30,209,24,217);
+            bar(22,217,24,225);
+            floodfill(23,211,WHITE);
+            
             break;
-        case 2://*采购单
+        case 2://采购单
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,131,139,169);
             puthz(27,140,"采购单",24,32,WHITE);
@@ -236,6 +238,10 @@ void drawad_purchase(int op)
             puthz(450,58,"单位",16,18,BLUE);
             puthz(490,58,"采购数量",16,18,BLUE);
             puthz(590,58,"总价",16,18,BLUE);
+
+            puthz(25,200,"当前日期",16,20,WHITE);
+            puthz(15,250,"前一天",16,18,WHITE);
+            puthz(80,250,"后一天",16,18,WHITE);
 
             break;
         case 3://条件筛选
