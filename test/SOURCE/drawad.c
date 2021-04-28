@@ -177,7 +177,7 @@ void drawad_purchase(int op)
             setlinestyle(SOLID_LINE,0,3);
             line(140,245,640,245);
 
-            puthz(25,200,"当前食堂",16,20,WHITE);
+            puthz(28,200,"当前食堂",16,20,WHITE);
             puthz(15,250,"上一个",16,18,WHITE);
             puthz(80,250,"下一个",16,18,WHITE);
 
