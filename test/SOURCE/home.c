@@ -3,7 +3,7 @@
 #include "drawhome.h"
 #include "input.h"
 #include "judge.h"
-#include "data.h"
+#include "database.h"
 
          
 //ึ๗าณ

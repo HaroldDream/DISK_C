@@ -153,7 +153,7 @@ void drawad(int num, int op)
         case 3://信息
             setfillstyle(SOLID_FILL,LIGHTBLUE);
             bar(520,36,580,40);
-            puthz(15,60,"订单来往",24,28,WHITE);            
+            puthz(15,60,"订单查询",24,28,WHITE);            
             puthz(27,140,"供应商",24,32,WHITE);
             puthz(15,100,"财务信息",24,28,WHITE);
 
@@ -166,7 +166,7 @@ void drawad_purchase(int op)
 {           
     switch(op)
     {
-        case 0://todo系统预测
+        case 0:
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,51,139,89);
             puthz(15,60,"系统预测",24,28,WHITE); 
@@ -203,10 +203,10 @@ void drawad_purchase(int op)
             puthz(305,58,"供应商",16,18,BLUE);
             puthz(400,58,"价格",16,18,BLUE);
             puthz(465,58,"单位",16,18,BLUE);
-            puthz(525,58,"预测需求",16,18,BLUE);
+            puthz(525,58,"分配统计",16,18,BLUE);
             puthz(605,58,"操作",16,18,BLUE);
 
-            puthz(43,208,"条件筛选",16,20,WHITE);
+            puthz(43,208,"种类筛选",16,20,WHITE);
             setcolor(WHITE);//筛选图标
             setfillstyle(SOLID_FILL,WHITE);
             bar(16,207,30,209);
@@ -236,12 +236,12 @@ void drawad_purchase(int op)
             puthz(315,58,"供应商",16,18,BLUE);
             puthz(400,58,"单价",16,18,BLUE);
             puthz(450,58,"单位",16,18,BLUE);
-            puthz(490,58,"采购数量",16,18,BLUE);
+            puthz(500,58,"数量",16,18,BLUE);
             puthz(590,58,"总价",16,18,BLUE);
-
-            puthz(25,200,"当前日期",16,20,WHITE);
+            /*
+            puthz(35,200,"当前日期",16,20,WHITE);
             puthz(15,250,"前一天",16,18,WHITE);
-            puthz(80,250,"后一天",16,18,WHITE);
+            puthz(80,250,"后一天",16,18,WHITE);*/
 
             break;
         case 3://条件筛选
@@ -256,43 +256,52 @@ void drawad_info(int op)
 {
     switch(op)
     {
-        case 0://系统预测
+        case 0:
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,51,139,89);
-            puthz(15,60,"订单来往",24,28,WHITE); 
+            puthz(15,60,"订单查询",24,28,WHITE); 
+
+            setcolor(DARKGRAY); 
+            setlinestyle(SOLID_LINE,0,1);//竖线
+            line(140,110,140,480);//名称
+            line(220,110,220,440);//种类
+            line(290,110,290,440);//供应商
+            line(390,110,390,440);//价格
+            line(440,110,440,440);//单位
+            line(490,110,490,440);//数量
+            line(560,110,560,440);//总价
+
+            puthz(160,118,"名称",16,18,BLUE);
+            puthz(235,118,"种类",16,18,BLUE);
+            puthz(315,118,"供应商",16,18,BLUE);
+            puthz(400,118,"单价",16,18,BLUE);
+            puthz(450,118,"单位",16,18,BLUE);
+            puthz(500,118,"数量",16,18,BLUE);
+            puthz(590,118,"总价",16,18,BLUE);
+
+            setfillstyle(SOLID_FILL,DARKGRAY);
+            bar(141,51,640,109);
+            puthz(200,58,"当前查询日期",16,20,WHITE);
+            puthz(500,70,"总价",16,20,WHITE);
+            puthz(160,88,"最早",16,18,WHITE);
+            puthz(210,88,"前一天",16,18,WHITE);
+            puthz(280,88,"后一天",16,18,WHITE);
+            puthz(350,88,"最新",16,18,WHITE);
+
             break;
-        case 1://采购目录
+        case 1:
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,91,139,129);
-            puthz(15,100,"财务信息",24,28,WHITE);
+            puthz(27,100,"食堂上报",24,28,WHITE);
 
-            setcolor(DARKGRAY);
-            setlinestyle(SOLID_LINE,0,1);//竖线
-            line(140,50,140,480);
-            line(240,50,240,440);
-            line(300,50,300,440);
-            line(400,50,400,440);
-            line(460,50,460,440);
-            line(518,50,518,440);
-            line(597,50,597,440);
-
-            puthz(175,58,"名称",16,18,BLUE);
-            puthz(255,58,"种类",16,18,BLUE);
-            puthz(325,58,"供应商",16,18,BLUE);
-            puthz(415,58,"价格",16,18,BLUE);
-            puthz(475,58,"数量",16,18,BLUE);
-            puthz(523,58,"预测需求",16,18,BLUE);
-            puthz(600,58,"操作",16,18,BLUE);
             break;
-        case 2://采购目录
+        case 2:
             setfillstyle(SOLID_FILL,BLUE);
             bar(0,131,139,169);
-            puthz(27,140,"采购单",24,32,WHITE);
+            puthz(27,140,"库存查询",24,32,WHITE);
             break;
-        /*case 3://条件筛选
-            setfillstyle(SOLID_FILL,BLUE);
-            bar(0,171,139,209);
-            break;*/
+        
+        default: break;
     }
 }
 
@@ -308,14 +317,14 @@ void drawad_storage(int op)
             setcolor(DARKGRAY);
             line(140+100,50,140+100,440);
             line(140+100*2,50,140+100*2,440);
-            line(140+100*3,50,140+100*3,440);
-            line(140+100*4,50,140+100*4,440);
+            line(140+100*3-50,50,140+100*3-50,440);
+            line(140+100*4-50,50,140+100*4-50,440);
 
             puthz(156,58,"库存编号",16,18,BLUE);
             puthz(272,58,"名称",16,20,BLUE);
-            puthz(357,58,"入库时间",16,18,BLUE);
-            puthz(457,58,"库存总数",16,18,BLUE);
-            puthz(565,58,"单位",16,20,BLUE);
+            puthz(350,58,"单位",16,20,BLUE);
+            puthz(407,58,"库存总数",16,18,BLUE);
+            puthz(535,58,"入库时间",16,18,BLUE);
             break;
         case 1:
             setfillstyle(SOLID_FILL,BLUE);
@@ -340,17 +349,34 @@ void drawad_storage(int op)
             bar(1,131,139,169);
             puthz(35,140,"出库",24,40,WHITE);
 
+            
+            setfillstyle(SOLID_FILL,WHITE);
+            bar(140,53,160,78+30*12);
+            bar(620,53,640,78+30*12);
+            bar(140,53,640,109);
+            bar(140,411,640,78+30*12);
+            setfillstyle(SOLID_FILL,RED);
+            bar(20,392,120,422);
             setcolor(DARKGRAY);
-            line(260,50,260,440);
-            line(320,50,320,440);
-            line(420,50,420,440);
-            line(510,50,510,440);
+            setlinestyle(SOLID_LINE,0,3);
+            line(140,51,140,80+30*12); //左边框
+            line(640,51,640,80+30*12); //右边框
+            setlinestyle(SOLID_LINE,0,1);
+            line(160,110,160,410);
+            line(275,110,275,410);
+            line(390,110,390,410);
+            line(440,110,440,410);
+            line(620,110,620,410);
 
-            puthz(168,58,"出库单号",16,18,BLUE);
-            puthz(273,58,"食堂",16,20,BLUE);
-            puthz(340,58,"物流状态",16,18,BLUE);
-            puthz(430,58,"是否出库",16,18,BLUE);
-            puthz(540,58,"操作时间",16,18,BLUE);
+            puthz(33,400,"确认出库",16,20,WHITE);  
+            puthz(352,60,"出库单",24,26,BLUE);
+            puthz(170,88,"食堂名称",16,20,BLUE);
+            puthz(415,88,"出库时间",16,18,BLUE);
+            puthz(200,118,"种类",16,20,BLUE);
+            puthz(312,118,"名称",16,20,BLUE);
+            puthz(395,118,"单位",16,20,BLUE);
+            puthz(510,118,"数量",16,20,BLUE);
+            
             break;
     }
 }
@@ -374,6 +400,7 @@ void drawad_logistic(int op)
             puthz(150,88,"序号",16,18,BLUE);
             puthz(218,88,"供应商",16,18,BLUE);
             puthz(423,88,"物流状态",16,20,BLUE);
+
             break;
         case 1:
             setfillstyle(SOLID_FILL,BLUE);
@@ -406,6 +433,12 @@ void drawad_logistic(int op)
             
             puthz(180,58,"运输单号",16,18,BLUE);
             puthz(335,58,"类别",16,20,BLUE);
+            puthz(325,58+30,"蔬菜类",16,20,BLUE);
+            puthz(325,58+30*2,"肉类",16,20,BLUE);
+            puthz(325,58+30*3,"水产类",16,20,BLUE);
+            puthz(325,58+30*4,"其他",16,20,BLUE);
+            puthz(325,58+30*5,"调料",16,18,BLUE);
+            puthz(325,58+30*6,"粮油面",16,18,BLUE);
             puthz(432,58,"是否发货",16,18,BLUE);
             puthz(547,58,"操作时间",16,18,BLUE);
             break;
@@ -445,14 +478,32 @@ void typemenu_lg(int op)
             puthz(540,88+30*3,"其他",16,18,DARKGRAY);
             puthz(540,88+30*4,"调料",16,18,DARKGRAY);
             puthz(533,88+30*5,"粮油面",16,18,DARKGRAY);
-            // puthz(533,88,"蔬菜类",16,18,WHITE);
-            // puthz(540,88+30,"肉类",16,18,WHITE);
-            // puthz(533,88+30*2,"水产类",16,18,WHITE);
-            // puthz(540,88+30*3,"其他",16,18,WHITE);
-            // puthz(540,88+30*4,"调料",16,18,WHITE);
-            // puthz(533,88+30*5,"粮油面",16,18,WHITE);
             break;
-        
+           
+        case 2:
+            setcolor(DARKGRAY);
+            setlinestyle(SOLID_LINE,0,3);
+            rectangle(10,162,110,162+30*6);
+            setfillstyle(SOLID_FILL,WHITE);
+            bar(10,162,110,162+30*6);
+            puthz(33,170,"蔬菜类",16,18,DARKGRAY);
+            puthz(40,170+30,"肉类",16,18,DARKGRAY);
+            puthz(33,170+30*2,"水产类",16,18,DARKGRAY);
+            puthz(40,170+30*3,"其他",16,18,DARKGRAY);
+            puthz(40,170+30*4,"调料",16,18,DARKGRAY);
+            puthz(33,170+30*5,"粮油面",16,18,DARKGRAY);
+            break;
+        case 3:
+            setcolor(DARKGRAY);
+            setlinestyle(SOLID_LINE,0,3);
+            rectangle(10,162+30*2,110,162+30*6);
+            setfillstyle(SOLID_FILL,WHITE);
+            bar(10,162+30*2,110,162+30*6);
+            puthz(33,170+30*2,"百景园",16,18,DARKGRAY);
+            puthz(25,170+30*3,"喻园食堂",16,18,DARKGRAY);
+            puthz(25,170+30*4,"韵苑食堂",16,18,DARKGRAY);
+            puthz(25,170+30*5,"学二食堂",16,18,DARKGRAY);
+            break;     
         default:
             break;
     }

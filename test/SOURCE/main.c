@@ -39,11 +39,11 @@ void main()
 				break;   
 
 			case 3:   //*后勤管理员主页面
-			    admain(&page,&u);
+				admain(&page);
 				break;
 
 			case 4:   //*食堂用户主页面
-			    usermain(&page,&u);
+				usermain(&page);
 				break;
 		}
 	}

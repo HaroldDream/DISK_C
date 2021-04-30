@@ -21,7 +21,8 @@
         "ostream": "c",
         "numeric": "c",
         "sstream": "c",
-        "streambuf": "c"
+        "streambuf": "c",
+        "infof.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

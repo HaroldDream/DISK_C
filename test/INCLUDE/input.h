@@ -2,7 +2,7 @@
 #define _INPUT_H_
 
 #include "common.h"
-#include "data.h"
+#include "database.h"
 
 void input(char* id, int x1, int y1, int charnum, int color);
 void inputmm(char* id, int x1, int y1, int charnum, int color);

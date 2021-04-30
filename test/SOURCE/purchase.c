@@ -2,12 +2,15 @@
 #include "admain.h"
 #include "drawad.h"
 #include "pfile.h"
+#include "pfunc.h"
+#include "purchase.h"
 
 void purchase(int *fun)
 {
     int op = 2;
     int num = 1;
     int day = 0;
+    int type = 0;
     while (1)
     {
         switch(op)
@@ -16,40 +19,43 @@ void purchase(int *fun)
                 *fun= 0;				//退出至登录界面
 				return ;
             case 1: 
-                xtyc(&op,&num);
+                xtyc(&op, &num);
                 break;
             case 2: 
-                cgml(&op);
+                cgml(&op, &type);
                 break;
             case 3: 
-                cgd(&op);
+                cgd(&op, &day);
                 break;
             case 4:
-                *fun = 1;
+                *fun = 1; //采购
                 return;
             case 5:
-                *fun = 2;
+                *fun = 2; //物流
                 return;
             case 6:
-                *fun = 3;
+                *fun = 3; //信息
                 return;
             case 7:
-                *fun = 4;
+                *fun = 4; //仓储
                 return;
+            default:
+                break;
         }
     }
 }
 
-void cgml(int *op)
+void cgml(int *op, int *type)
 {
-    int page = 1, n = 0, a = 0;
+    int page = 1, a = 0;
     int i = 0;
-    int f = 0; //判断是否点击
+    int flag = 0, flag2 = 0; //判断是否点击
 
     clrmous(MouseX,MouseY);
     delay(100);
+    sum();
     drawad(1,1);
-    show_plist(1);
+    show_plist(1,*type);
 
     while(1)
     {
@@ -57,46 +63,72 @@ void cgml(int *op)
         
         for (i = 0; i < 12; i++)
         {
-            if (mouse_press(600,80+30*i,640,110+30*i) == 1)
+            if (mouse_press(600,80+30*i,640,110+30*i) == 1) //click purchase
             {
-                n = i;
-                f = 1;
-                //break;
+                flag = 1;
                 a = pop(1); //amount of purchase
                 if (a != 0) 
                 {
-                    up_order(n,a,page);
+                    up_order(i,a,page);
                     a = 0;
                     page = 1;
                     break;
                 }
-                else break;                
+                else 
+                    break;                
             }
-            if (f == 1) 
+            if (flag == 1) 
             {
                 return;
             }
         }
 
 
-        if(mouse_press(10,390,130,430) == 1)//todo条件筛选
+        if(mouse_press(10,200,130,230) == 1)//条件筛选
         {
             delay(100);
+            flag2 = 1;
 
+            clrmous(MouseX, MouseY);
+
+            setcolor(DARKGRAY);
+            setlinestyle(SOLID_LINE,0,3);
+            rectangle(10,230,130,230+30*6);
+            setfillstyle(SOLID_FILL,WHITE);
+            bar(10,230,130,230+30*6);
+            puthz(50,238,"蔬菜",16,18,DARKGRAY);
+            puthz(50,238+30,"肉类",16,18,DARKGRAY);
+            puthz(50,238+30*2,"水产",16,18,DARKGRAY);
+            puthz(50,238+30*3,"调料",16,18,DARKGRAY);
+            puthz(45,238+30*4,"粮油面",16,18,DARKGRAY);
+            puthz(50,238+30*5,"其他",16,18,DARKGRAY);    
+            newmouse(&MouseX, &MouseY, &MouseS);      
+        }
+        if (flag2 == 1)
+        {
+            for (i = 0; i < 6; i++)
+            {
+                if (mouse_press(10,230+i*30,130,260+i*30) == 1)
+                {
+                    delay(100);
+                    *type = i+1;
+                    return;
+                }
+            }
         }
 
         if ((mouse_press(510,445,560,480) == 1) && (page > 1))//上一页
         {
             delay(100);
             drawad(1,1);
-            show_plist(page - 1);
+            show_plist(page - 1,*type);
             page--;
         }
-        if ((mouse_press(560,445,610,480) == 1) && (page < show_plist(page)))//下一页
+        if ((mouse_press(560,445,610,480) == 1) && (page < show_plist(page,*type)))//下一页
         {
             delay(100);
             drawad(1,1);
-            show_plist(page + 1);
+            show_plist(page + 1,*type);
             page++;
         }
 
@@ -114,6 +146,12 @@ void cgml(int *op)
         if(mouse_press(0,131,140,169) == 1)//采购单
         {
             *op = 3;
+            return;
+        }
+        if(mouse_press(0,91,140,129) == 1)//采购目录
+        {
+            *op = 2;
+            *type = 0;
             return;
         }
 
@@ -137,12 +175,12 @@ void cgml(int *op)
 
 }
 
-void xtyc(int *op)
+void xtyc(int *op, int *num)
 {
     int page = 1;
     //int num = 1; //canteen number
     int n = 1; //current number
-    int i = 0, a = 0;
+    int a = 0;
 
     clrmous(MouseX,MouseY);
     delay(100);
@@ -180,16 +218,15 @@ void xtyc(int *op)
             else break;
         }
         
-        rectangle(5,240,70,260);
-        rectangle(75,240,135,260);
-        if ((mouse_press(5,240,70,270) == 1) && (*num > 1))
+
+        if ((mouse_press(5,245,70,270) == 1) && (*num > 1)) //last canteen
         {
-            *num --;
+            *num = *num - 1;
             return;
         }
-        if ((mouse_press(75,240,135,270) == 1) && (*num < 4))
+        if ((mouse_press(75,245,135,270) == 1) && (*num < 4)) //next canteen
         {
-            *num ++;
+            *num = *num + 1;
             return;
         }
 
@@ -218,6 +255,7 @@ void xtyc(int *op)
         if(mouse_press(0,91,140,129) == 1)//采购目录
         {
             *op = 2;
+            //*type = 0;
             return;
         }
         if(mouse_press(0,131,140,169) == 1)//采购单
@@ -245,33 +283,41 @@ void xtyc(int *op)
     return;
 }
 
-void cgd(int *op)
+void cgd(int *op, int *day)
 {
     int page = 1;
-    int i = 0;
 
     clrmous(MouseX,MouseY);
     delay(100);
     drawad(1,2);
-    show_order(1);
+    show_order(1, *day);
 
     while(1)
     {
         newmouse(&MouseX, &MouseY, &press);    
-
-
+        /*
+        if ((mouse_press(5,245,70,270) == 1) && (*day > -4))
+        {
+            *day = *day - 1;
+            return;
+        }
+        if ((mouse_press(75,245,135,270) == 1) && (*day < 0))
+        {
+            *day = *day + 1;
+            return;
+        }*/
 
 
         if ((mouse_press(510,445,560,480) == 1) && (page > 1))//上一页
         {
             drawad(1,2);
-            show_plist(page - 1);
+            show_order(page - 1, *day);
             page -= 1;
         }
-        if ((mouse_press(560,445,610,480) == 1) && (page < show_order(page)))//下一页
+		if ((mouse_press(560,445,610,480) == 1) && (page < show_order(page, *day)))//下一页
         {
             drawad(1,2);
-            show_plist(page + 1);
+            show_order(page + 1, *day);
             page += 1;
         }
 
@@ -290,6 +336,7 @@ void cgd(int *op)
         if(mouse_press(0,91,140,129) == 1)//采购目录
         {
             *op = 2;
+            //*type = 0;
             return;
         }
 
@@ -393,8 +440,7 @@ int pop(int n)
 			return 0;
 		}
     }
-
-    
+    return -1;
 }
 
 

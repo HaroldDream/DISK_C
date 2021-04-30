@@ -1,5 +1,5 @@
 #include "common.h"
-#include "data.h"
+#include "database.h"
 
 /********************************************
 FUNCTION:input_data
